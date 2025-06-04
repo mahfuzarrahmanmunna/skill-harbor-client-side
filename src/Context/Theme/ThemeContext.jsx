@@ -1,4 +1,4 @@
-import { createContext, use, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
 
@@ -7,7 +7,7 @@ export function ThemeProvider({ children }) {
 
     useEffect(() => {
         const saved = localStorage.getItem('theme');
-        const systemPref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const systemPref = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
         setTheme(saved || systemPref);
     }, [])
 
@@ -17,7 +17,7 @@ export function ThemeProvider({ children }) {
 
     const toggleTheme = () => {
         setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-    }
+    };
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -29,5 +29,5 @@ export function ThemeProvider({ children }) {
 }
 
 export const useTheme = () => {
-    return use(ThemeContext)
+    return useContext(ThemeContext)
 }

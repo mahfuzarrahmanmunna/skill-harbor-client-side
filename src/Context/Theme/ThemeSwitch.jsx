@@ -1,30 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
+import { useTheme } from './ThemeContext';
+import { Moon, SunMoon } from 'lucide-react';
 
 const ThemeSwitch = () => {
-    const [theme, setTheme] = useState(
-        localStorage.getItem("theme") || "light"
-    );
-
-    useEffect(() => {
-        document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-    }, [theme]);
-
-    const toggleTheme = () => {
-        setTheme((prev) => (prev === "light" ? "dark" : "light"));
-    };
-
+    const { theme, toggleTheme } = useTheme()
     return (
-        <button onClick={toggleTheme} style={{
-            padding: "0.5rem 1rem",
-            borderRadius: "1rem",
-            border: "none",
-            cursor: "pointer",
-            background: theme === "light" ? "#222" : "#fff",
-            color: theme === "light" ? "#fff" : "#222"
-        }}>
-            Switch to {theme === "light" ? "Dark" : "Light"} Mode
-        </button>
+        <div className={`btn btn-circle btn-outline border-0 hover:shadow ${theme === 'light' ? 'bg-gray-200' : 'bg-gray-700'}`}>
+            <div onClick={toggleTheme}>
+                {theme == 'light' ? <SunMoon className='text-gray-800' /> : <Moon className='text-gray-100' />}
+            </div>
+        </div>
     );
 };
 

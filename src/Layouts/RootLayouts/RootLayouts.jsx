@@ -5,11 +5,16 @@ import { Outlet } from 'react-router';
 
 const RootLayouts = () => {
     return (
-        <div>
+        <div className="font-sans text-base text-gray-800 dark:text-gray-100 bg-gray-100 dark:bg-neutral-900 transition-colors duration-300 min-h-screen flex flex-col">
+            {/* Navbar */}
             <Navbar />
-            <div className='min-h-[calc(100vh-361px)]'>
+
+            {/* Page Content */}
+            <main className="flex-1 bg-gray-100 dark:bg-neutral-800 transition-colors duration-300">
                 <Outlet />
-            </div>
+            </main>
+
+            {/* Footer */}
             <Footer />
         </div>
     );
