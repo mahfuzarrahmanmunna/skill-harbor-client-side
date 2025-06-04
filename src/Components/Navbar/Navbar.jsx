@@ -2,9 +2,23 @@ import { NavLink } from "react-router";
 // import { FaUserCircle } from "react-icons/fa";
 import ThemeSwitch from "../../Context/Theme/ThemeSwitch";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import { LogOut } from "lucide-react";
 
 const Navbar = () => {
-    const { user } = useAuth()
+    const { user, logOutUser } = useAuth()
+
+    const handleLogOutUser = () => {
+        logOutUser().then(() => {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Log Out successful!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        })
+    }
 
     const navLinkClass = ({ isActive }) =>
         isActive
@@ -24,21 +38,8 @@ const Navbar = () => {
                     <li>
                         <NavLink to="/add-course" className={navLinkClass}>Add Course</NavLink>
                     </li>
-                    {/* <li>
-                        <NavLink to="/dashboard" className={navLinkClass}>Dashboard</NavLink>
-                    </li> */}
                 </>
             )}
-            {/* {!user && (
-                <>
-                    <li>
-                        <NavLink to="/login" className={navLinkClass}>Login</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/register" className={navLinkClass}>Register</NavLink>
-                    </li>
-                </>
-            )} */}
         </>
     );
 
@@ -96,13 +97,39 @@ const Navbar = () => {
                         </NavLink>
                     </div>
                 ) : (
-                    <div className="avatar online">
-                        <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src={user?.photoURL} alt="User Profile" />
+                    <div title={user?.displayName} className="dropdown   dropdown-end ms-2">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img
+                                    alt="Tailwind CSS Navbar component"
+                                    src={user?.photoURL} />
+                            </div>
                         </div>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-sm dropdown-content bg-base-100 overflow-auto rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            <li>
+                                <div className="justify-between font-semibold">
+                                    {user?.displayName}
+                                </div>
+                            </li>
+                            <li className=''>
+                                <div className="justify-between  font-semibold">
+                                    {user?.email}
+                                </div>
+                            </li>
+                            {/* <li><a>Settings</a></li> */}
+                            <li>
+                                <button className='font-bold' onClick={handleLogOutUser}>
+                                    <LogOut /> Signout
+                                </button>
+                            </li>
+                        </ul>
                     </div>
+
                 )}
             </div>
+
         </div>
     );
 };

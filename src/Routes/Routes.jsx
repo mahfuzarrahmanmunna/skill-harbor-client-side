@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router";
 import RootLayouts from "../Layouts/RootLayouts/RootLayouts";
 import Home from "../Pages/Home/Home";
-import Register from "../Pages/Register/Register";
 import AllCourse from "../Pages/Course/AllCourse/AllCourse";
 import AddCourse from "../Pages/Course/AddCourse/AddCourse";
 import PrivateRoutes from "../Private/PrivateRoutes";
+import SignIn from "../Pages/SignIn/SignIn";
+import SignUp from "../Pages/SignUp/SignUp";
 
 export const router = createBrowserRouter([
     {
@@ -27,7 +28,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/register',
-                Component: Register
+                Component: SignUp
+            },
+            {
+                path: '/login',
+                Component: SignIn
             }
         ]
     }

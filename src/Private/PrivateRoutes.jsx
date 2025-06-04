@@ -1,6 +1,7 @@
 import React from 'react';
 import useAuth from '../Hooks/useAuth';
 import { Navigate, useLocation } from 'react-router';
+import Fallback from '../Components/Fallback/Fallback';
 
 const PrivateRoutes = ({ children }) => {
     const { user, loading } = useAuth()
@@ -8,7 +9,7 @@ const PrivateRoutes = ({ children }) => {
     const location = useLocation()
 
     if (loading) {
-        return 'loading'
+        return <Fallback />
     }
     if (user && user.email) {
         return children
