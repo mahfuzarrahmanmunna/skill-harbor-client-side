@@ -1,11 +1,10 @@
 import { NavLink } from "react-router";
-import { use, useState } from "react";
-import { FaUserCircle } from "react-icons/fa";
+// import { FaUserCircle } from "react-icons/fa";
 import ThemeSwitch from "../../Context/Theme/ThemeSwitch";
-import { AuthContext } from "../../Authentication/AuthContext/AuthContext";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
-    const { user } = use(AuthContext)
+    const { user } = useAuth()
 
     const navLinkClass = ({ isActive }) =>
         isActive

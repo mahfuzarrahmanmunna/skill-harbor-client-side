@@ -1,19 +1,17 @@
 import { use, useState } from "react";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Lottie from "lottie-react";
 import { Typewriter } from 'react-simple-typewriter';
 import { Fade } from "react-awesome-reveal";
 import { motion } from "framer-motion";
 import usePageTitle from "../../Hooks/usePageTitle";
-import { AuthContext } from "../../Authentication/AuthContext/AuthContext";
+import useAuth from "../../Hooks/useAuth";
 // import registerAnim from "../assets/register.json";
 
 const Register = () => {
     usePageTitle()
-    const { createUser, updateUser, setUser } = use(AuthContext)
+    const { createUser, updateUser, setUser } = useAuth()
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();
