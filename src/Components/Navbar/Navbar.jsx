@@ -1,10 +1,11 @@
 import { NavLink } from "react-router";
-import { useState } from "react";
+import { use, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import ThemeSwitch from "../../Context/Theme/ThemeSwitch";
+import { AuthContext } from "../../Authentication/AuthContext/AuthContext";
 
 const Navbar = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulated auth
+    const { user } = use(AuthContext)
 
     const navLinkClass = ({ isActive }) =>
         isActive
@@ -17,19 +18,19 @@ const Navbar = () => {
                 <NavLink to="/" className={navLinkClass}>Home</NavLink>
             </li>
             <li>
-                <NavLink to="/jobs" className={navLinkClass}>Jobs</NavLink>
+                <NavLink to="/all-course" className={navLinkClass}>Course</NavLink>
             </li>
-            {isLoggedIn && (
+            {user && (
                 <>
                     <li>
-                        <NavLink to="/add-job" className={navLinkClass}>Add Job</NavLink>
+                        <NavLink to="/add-course" className={navLinkClass}>Add Course</NavLink>
                     </li>
-                    <li>
+                    {/* <li>
                         <NavLink to="/dashboard" className={navLinkClass}>Dashboard</NavLink>
-                    </li>
+                    </li> */}
                 </>
             )}
-            {!isLoggedIn && (
+            {/* {!user && (
                 <>
                     <li>
                         <NavLink to="/login" className={navLinkClass}>Login</NavLink>
@@ -38,7 +39,7 @@ const Navbar = () => {
                         <NavLink to="/register" className={navLinkClass}>Register</NavLink>
                     </li>
                 </>
-            )}
+            )} */}
         </>
     );
 
@@ -86,7 +87,7 @@ const Navbar = () => {
             <div className="navbar-end flex items-center gap-3">
                 <ThemeSwitch />
 
-                {!isLoggedIn ? (
+                {!user ? (
                     <div className="flex gap-2">
                         <NavLink to="/login" className="btn btn-sm btn-outline btn-primary">
                             Login
@@ -98,7 +99,7 @@ const Navbar = () => {
                 ) : (
                     <div className="avatar online">
                         <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src="https://i.pravatar.cc/100" alt="User Profile" />
+                            <img src={user?.photoURL} alt="User Profile" />
                         </div>
                     </div>
                 )}

@@ -6,12 +6,12 @@ const Footer = () => {
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Column 1: Logo & Slogan */}
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white">EduCraft</h1>
+                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Skill Harbor</h1>
                     <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                         Empowering Learning, One Course at a Time.
                     </p>
                     <div className="flex space-x-4 mt-4 text-xl">
-                        <a href="#" className="hover:text-blue-600">
+                        <a href="https://www.facebook.com/profile.php?id=61558381851640" target='_blank' className="hover:text-blue-600">
                             <FaFacebookF />
                         </a>
                         <a href="#" className="hover:text-sky-400">

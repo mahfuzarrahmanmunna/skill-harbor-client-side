@@ -8,6 +8,7 @@ const usePageTitle = () => {
         const path = location.pathname;
 
         if (path === '/') document.title = "Home | Skill Harbor"
+        if (path === '/all-course') document.title = "Courses | Skill Harbor"
     }, [location])
 };
 

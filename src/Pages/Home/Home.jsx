@@ -4,8 +4,8 @@ import usePageTitle from '../../Hooks/usePageTitle';
 
 const Home = () => {
     usePageTitle()
-    const userInfo = use(AuthContext)
-    console.log(userInfo);
+    const { user } = use(AuthContext)
+    console.log(user);
     return (
         <div>
             <h1>This is home</h1>
