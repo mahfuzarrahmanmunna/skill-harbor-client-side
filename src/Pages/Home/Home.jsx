@@ -1,7 +1,9 @@
 import React, { use } from 'react';
 import { AuthContext } from '../../Authentication/AuthContext/AuthContext';
+import usePageTitle from '../../Hooks/usePageTitle';
 
 const Home = () => {
+    usePageTitle()
     const userInfo = use(AuthContext)
     console.log(userInfo);
     return (
