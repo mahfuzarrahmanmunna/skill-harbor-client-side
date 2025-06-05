@@ -18,7 +18,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/all-course',
-                Component: AllCourse,
+                element: <PrivateRoutes>
+                    <AllCourse />
+                </PrivateRoutes>,
             },
             {
                 path: '/add-course',
@@ -27,11 +29,11 @@ export const router = createBrowserRouter([
                 </PrivateRoutes>,
             },
             {
-                path: '/register',
+                path: '/sign-up',
                 Component: SignUp
             },
             {
-                path: '/login',
+                path: '/sign-in',
                 Component: SignIn
             }
         ]

@@ -1,4 +1,4 @@
-import { use, useState } from 'react';
+import { useState } from 'react';
 import Lottie from 'lottie-react';
 import { Typewriter } from 'react-simple-typewriter';
 import { Fade } from 'react-awesome-reveal';
@@ -19,6 +19,8 @@ const SignUp = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
+    console.log(createUser);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         toast.dismiss('error')
@@ -31,33 +33,34 @@ const SignUp = () => {
         const photo = form.photo.value;
         const formData = new FormData(form)
         const { email, password, confirmPassword, ...rest } = Object.fromEntries(formData.entries())
-        const userData = {
-            email,
-            password,
-            confirmPassword
-        }
-        console.log(userData);
+        // const userData = {
+        //     email,
+        //     password,
+        //     confirmPassword
+        // }
+        // console.log(userData);
         // Handle form submission (e.g., API call)
-        if (password.length < 8) {
-            toast.error("Password mast be 8 character or more");
-            setPassError('Password mast be 8 character or more');
-            return
-        }
-        if (!/[a-z]/.test(password)) {
-            toast.error("Password contains at least one lowercase letter.")
-            setPassError("Password contains at least one lowercase letter.");
-            return
-        }
-        if (!/[A-Z]/.test(password)) {
-            toast.error("Password contains at least one uppercase letter.")
-            setPassError('Password contains at least one uppercase letter.');
-            return
-        }
-        if (password !== confirmPassword) {
-            toast.error("Password and confirm password not matched..!")
-            setPassError("Password and confirm password not matched..!")
-            return
-        }
+
+        // if (password.length < 8) {
+        //     toast.error("Password mast be 8 character or more");
+        //     setPassError('Password mast be 8 character or more');
+        //     return
+        // }
+        // if (!/[a-z]/.test(password)) {
+        //     toast.error("Password contains at least one lowercase letter.")
+        //     setPassError("Password contains at least one lowercase letter.");
+        //     return
+        // }
+        // if (!/[A-Z]/.test(password)) {
+        //     toast.error("Password contains at least one uppercase letter.")
+        //     setPassError('Password contains at least one uppercase letter.');
+        //     return
+        // }
+        // if (password !== confirmPassword) {
+        //     toast.error("Password and confirm password not matched..!")
+        //     setPassError("Password and confirm password not matched..!")
+        //     return
+        // }
 
         // create user here
         createUser(email, password)

@@ -31,7 +31,7 @@ const Navbar = () => {
                 <NavLink to="/" className={navLinkClass}>Home</NavLink>
             </li>
             <li>
-                <NavLink to="/all-course" className={navLinkClass}>Course</NavLink>
+                <NavLink to="/all-course" className={navLinkClass}>Our Courses</NavLink>
             </li>
             {user && (
                 <>
@@ -89,11 +89,11 @@ const Navbar = () => {
 
                 {!user ? (
                     <div className="flex gap-2">
-                        <NavLink to="/login" className="btn btn-sm btn-outline btn-primary">
-                            Login
+                        <NavLink to="/sign-in" className="btn btn-sm btn-outline btn-primary">
+                            Signin
                         </NavLink>
-                        <NavLink to="/register" className="btn btn-sm btn-primary">
-                            Register
+                        <NavLink to="/sign-up" className="btn btn-sm btn-primary">
+                            Signup
                         </NavLink>
                     </div>
                 ) : (

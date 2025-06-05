@@ -1,4 +1,3 @@
-import { use } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { Typewriter } from 'react-simple-typewriter';
 import { Fade } from 'react-awesome-reveal';
@@ -11,7 +10,8 @@ import useAuth from '../../Hooks/useAuth';
 
 const SignIn = () => {
     usePageTitle()
-    const { signInPass, signinWithGoogle } = useAuth
+    const { signInPass, signinWithGoogle } = useAuth()
+    console.log(signInPass);
 
     const provider = new GoogleAuthProvider();
 
@@ -44,28 +44,28 @@ const SignIn = () => {
                 const user = result.user;
                 navigate(`${location.state ? location.state : '/'}`);
                 console.log(user);
-                const signInInfo = {
-                    email,
-                    lastSignInTime: user?.metadata?.lastSignInTime
-                }
-                fetch('https://freelance-task-marketplace-server.vercel.app/users', {
-                    method: 'PATCH',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(signInInfo)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log('after updated data', data);
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Sign in successful",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    })
+                // const signInInfo = {
+                //     email,
+                //     lastSignInTime: user?.metadata?.lastSignInTime
+                // }
+                // fetch('https://freelance-task-marketplace-server.vercel.app/users', {
+                //     method: 'PATCH',
+                //     headers: {
+                //         'content-type': 'application/json'
+                //     },
+                //     body: JSON.stringify(signInInfo)
+                // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log('after updated data', data);
+                //         Swal.fire({
+                //             position: "center",
+                //             icon: "success",
+                //             title: "Sign in successful",
+                //             showConfirmButton: false,
+                //             timer: 1500
+                //         });
+                //     })
             })
             .catch(error => {
                 const code = error.code;

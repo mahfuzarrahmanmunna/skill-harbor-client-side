@@ -1,5 +1,6 @@
 import usePageTitle from '../../Hooks/usePageTitle';
 import useAuth from '../../Hooks/useAuth';
+import BannerSlider from '../../Components/Banner/BannerSlider';
 
 const Home = () => {
     usePageTitle()
@@ -7,7 +8,7 @@ const Home = () => {
     console.log(user);
     return (
         <div>
-            <h1>This is home</h1>
+            <BannerSlider />
         </div>
     );
 };
