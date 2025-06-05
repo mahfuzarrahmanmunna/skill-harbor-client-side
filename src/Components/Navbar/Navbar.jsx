@@ -107,20 +107,20 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 overflow-auto rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            className="menu menu-sm dropdown-content bg-gray-100 dark:bg-gray-800 overflow-auto rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <li>
-                                <div className="justify-between font-semibold">
+                                <div className="justify-between text-gray-800 dark:text-gray-200 font-semibold">
                                     {user?.displayName}
                                 </div>
                             </li>
                             <li className=''>
-                                <div className="justify-between  font-semibold">
+                                <div className="justify-between text-gray-800 dark:text-gray-100 font-semibold">
                                     {user?.email}
                                 </div>
                             </li>
                             {/* <li><a>Settings</a></li> */}
                             <li>
-                                <button className='font-bold' onClick={handleLogOutUser}>
+                                <button className='font-bold text-gray-800 dark:text-gray-200 ' onClick={handleLogOutUser}>
                                     <LogOut /> Signout
                                 </button>
                             </li>

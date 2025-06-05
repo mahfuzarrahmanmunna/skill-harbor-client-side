@@ -38,27 +38,26 @@ const SignUp = () => {
         }
         console.log(userData);
         // Handle form submission (e.g., API call)
-        // if (password.length < 6) {
-        //     toast.error("Password mast be 6 character or more");
-        //     // Swal.fire({
-        //     //     icon: 'error',
-        //     //     title: "Oops...",
-        //     //     text: "password mast be 6 character or more",
-        //     //     footer: <a href="">why do I have this issue?</a>
-        //     // })
-        //     setPassError('Password mast be 6 character or more');
-        //     return
-        // }
-        // if (!/[a-z]/.test(password)) {
-        //     toast.error("Password contains at least one lowercase letter.")
-        //     setPassError("Password contains at least one lowercase letter.");
-        //     return
-        // }
-        // if (!/[A-Z]/.test(password)) {
-        //     toast.error("Password contains at least one uppercase letter.")
-        //     setPassError('Password contains at least one uppercase letter.');
-        //     return
-        // }
+        if (password.length < 8) {
+            toast.error("Password mast be 8 character or more");
+            setPassError('Password mast be 8 character or more');
+            return
+        }
+        if (!/[a-z]/.test(password)) {
+            toast.error("Password contains at least one lowercase letter.")
+            setPassError("Password contains at least one lowercase letter.");
+            return
+        }
+        if (!/[A-Z]/.test(password)) {
+            toast.error("Password contains at least one uppercase letter.")
+            setPassError('Password contains at least one uppercase letter.');
+            return
+        }
+        if (password !== confirmPassword) {
+            toast.error("Password and confirm password not matched..!")
+            setPassError("Password and confirm password not matched..!")
+            return
+        }
 
         // create user here
         createUser(email, password)
