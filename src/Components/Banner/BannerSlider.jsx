@@ -1,77 +1,189 @@
-// import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Sun, Moon } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
+import { motion } from "motion/react"
+import Typewriter from "typewriter-effect";
+import { Fade } from "react-awesome-reveal";
+import { Sun, Moon, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { Link } from "react-router";
 
 const slides = [
     {
         title: "Welcome to Our Course Platform",
-        subtitle: "Learn at your own pace with top instructors",
-        image: "https://png.pngtree.com/thumb_back/fh260/background/20221226/pngtree-dark-green-financial-management-fund-course-learning-banner-background-image_1496024.jpg",
-    },
-    {
-        title: "Build Real World Skills",
-        subtitle: "Master full stack development, data science, and more",
-        image: "https://thumbs.dreamstime.com/b/golf-course-fire-landscape-red-sunset-sky-dark-clouds-51355587.jpg",
-    },
-    {
-        title: "Join Thousands of Learners",
-        subtitle: "Boost your career with modern skillsets",
-        image: "https://thumbs.dreamstime.com/b/education-technology-e-learning-online-training-webinar-seminar-knowledge-business-personal-development-144808360.jpg",
-    },
+        subtitle: [
+            "Learn at your own pace",
+            "Top instructors",
+            "Flexible schedules",
+        ],
+        image:
+            "https://png.pngtree.com/thumb_back/fh260/background/20221226/pngtree-dark-green-financial-management-fund-course-learning-banner-background-image_1496024.jpg",
+    }
 ];
 
 export default function BannerSlider() {
-    const [index, setIndex] = useState(0);
-    const [theme, setTheme] = useState("light");
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setIndex((prev) => (prev + 1) % slides.length);
-        }, 5000);
-        return () => clearInterval(timer);
-    }, []);
-
-    useEffect(() => {
-        document.documentElement.classList.toggle("dark", theme === "dark");
-    }, [theme]);
 
     return (
-        <div className="relative h-[70vh] overflow-hidden rounded-2xl shadow-xl">
-            <img
-                src={slides[index].image}
-                alt="banner"
-                className="absolute inset-0 h-full w-full object-cover brightness-50"
-            />
-            <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4"
+        <div className="relative h-[70vh] overflow-hidden shadow-xl">
+            <Swiper
+                navigation={{ nextEl: ".next-btn", prevEl: ".prev-btn" }}
+                autoplay={{ delay: 5000, disableOnInteraction: false }}
+                modules={[Navigation, Autoplay]}
+                loop={true}
+                className="h-full"
             >
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                    {slides[index].title}
-                </h1>
-                <p className="text-lg md:text-xl max-w-xl mb-6">
-                    {slides[index].subtitle}
-                </p>
-                {/* <Button variant="secondary" size="lg">
-                    Explore Courses
-                </Button> */}
-            </motion.div>
+                {/* first slider */}
+                <SwiperSlide >
+                    <div className="relative h-full w-full">
+                        <img
+                            src="https://i.ibb.co/d4bG9pMd/hearts-1976653-1280.jpg"
+                            alt="banner"
+                            className="absolute inset-0 h-full w-full object-cover brightness-50"
+                        />
+                        <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4">
+                            <Fade direction="down" triggerOnce>
+                                <motion.h1
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6 }}
+                                    className="text-4xl md:text-5xl font-bold mb-4"
+                                >
+                                    Welcome to Our Course Platform
+                                </motion.h1>
+                            </Fade>
 
-            <div className="absolute top-4 right-4 z-20">
-                {/* <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() =>
-                        setTheme((prev) => (prev === "light" ? "dark" : "light"))
-                    }
-                >
-                    {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-                </Button> */}
-            </div>
+                            <Fade direction="down" delay={200} triggerOnce>
+                                <div className="text-lg md:text-xl max-w-xl mb-6">
+                                    <Typewriter
+                                        options={{
+                                            strings: [
+                                                "Learn at your own pace",
+                                                "Top instructors",
+                                                "Flexible schedules",
+                                            ],
+                                            autoStart: true,
+                                            loop: true,
+                                            delay: 50,
+                                            deleteSpeed: 30,
+                                        }}
+                                    />
+                                </div>
+                            </Fade>
+                            <Fade direction="up">
+                                <motion.div
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onHoverStart={() => console.log('hover started')}
+                                >
+                                    <Link
+                                        to='/sign-in' className="px-8 btn btn-white btn-outline">
+                                        Join us <ArrowRight />
+                                    </Link>
+                                </motion.div>
+                            </Fade>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                {/* second sliders */}
+                <SwiperSlide >
+                    <div className="relative h-full w-full">
+                        <img
+                            src="https://thumbs.dreamstime.com/b/education-technology-e-learning-online-training-webinar-seminar-knowledge-business-personal-development-144808360.jpg"
+                            alt="banner"
+                            className="absolute inset-0 h-full w-full object-cover brightness-50"
+                        />
+                        <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4">
+                            <Fade direction="down" triggerOnce>
+                                <motion.h1
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6 }}
+                                    className="text-4xl md:text-5xl font-bold mb-4"
+                                >
+                                    Join Thousands of Learners
+                                </motion.h1>
+                            </Fade>
+
+                            <Fade direction="down" delay={200} triggerOnce>
+                                <div className="text-lg md:text-xl max-w-xl mb-6">
+                                    <Typewriter
+                                        options={{
+                                            strings: ["Boost your career",
+                                                "Learn modern tools",
+                                                "Become job-ready",],
+                                            autoStart: true,
+                                            loop: true,
+                                            delay: 50,
+                                            deleteSpeed: 30,
+                                        }}
+                                    />
+                                </div>
+                            </Fade>
+                            <Fade direction="up">
+                                <button className="px-8 btn btn-white btn-outline">
+                                    join us
+                                </button>
+                            </Fade>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                {/* third slider  */}
+                <SwiperSlide >
+                    <div className="relative h-full w-full">
+                        <img
+                            src="https://i.ibb.co/TBCn1hTt/pexels-shvetsa-5711775.jpg"
+                            alt="banner"
+                            className="absolute inset-0 h-full w-full object-cover brightness-50"
+                        />
+                        <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4">
+                            <Fade direction="down" duration={2000} triggerOnce>
+                                <motion.h1
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6 }}
+                                    className="text-4xl md:text-5xl font-bold mb-4"
+                                >
+                                    Build Real World Skills
+                                </motion.h1>
+                            </Fade>
+
+                            <Fade direction="down" delay={200} duration={2000} triggerOnce>
+                                <div className="text-lg md:text-xl max-w-xl mb-6">
+                                    <Typewriter
+                                        options={{
+                                            strings: [
+                                                "Full stack development",
+                                                "Data science",
+                                                "Project-based learning",
+                                            ],
+                                            autoStart: true,
+                                            loop: true,
+                                            delay: 50,
+                                            deleteSpeed: 30,
+                                        }}
+                                    />
+                                </div>
+                            </Fade>
+                            <Fade direction="up">
+                                <Link to='/all-course' className="px-8 btn btn-white btn-outline">
+                                    Visit our course <ArrowRight />
+                                </Link>
+                            </Fade>
+                        </div>
+                    </div>
+                </SwiperSlide>
+
+                {/* Navigation Buttons */}
+                <button className="prev-btn absolute left-4 top-1/2 z-20 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full">
+                    <ChevronLeft size={24} />
+                </button>
+                <button className="next-btn absolute right-4 top-1/2 z-20 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full">
+                    <ChevronRight size={24} />
+                </button>
+            </Swiper>
         </div>
     );
 }
