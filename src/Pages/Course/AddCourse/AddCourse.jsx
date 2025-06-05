@@ -33,23 +33,7 @@ const AddCourse = () => {
 
         console.log(newCourse);
 
-        // try {
-        //     const res = await fetch("https://your-server-url.com/courses", {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify(newCourse),
-        //     });
-
-        //     if (!res.ok) throw new Error("Failed to add course");
-
-        //     toast.success("✅ Course added successfully!");
-        //     form.reset();
-        //     navigate("/");
-        // } catch (err) {
-        //     toast.error(`❌ ${err.message}`);
-        // }
+       
     };
 
     return (

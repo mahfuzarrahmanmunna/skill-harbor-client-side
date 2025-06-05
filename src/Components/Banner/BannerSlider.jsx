@@ -168,9 +168,16 @@ export default function BannerSlider() {
                                 </div>
                             </Fade>
                             <Fade direction="up">
-                                <Link to='/all-course' className="px-8 btn btn-white btn-outline">
-                                    Visit our course <ArrowRight />
-                                </Link>
+                                <motion.div
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onHoverStart={() => console.log('hover started')}
+                                >
+                                    <Link
+                                        to='/all-course' className="px-8 btn btn-white btn-outline">
+                                        Visit All Course <ArrowRight />
+                                    </Link>
+                                </motion.div>
                             </Fade>
                         </div>
                     </div>
