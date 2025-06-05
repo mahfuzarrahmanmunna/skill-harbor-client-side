@@ -6,6 +6,7 @@ import useAuth from "../../../Hooks/useAuth";
 import Typewriter from 'typewriter-effect';
 import { Fade } from "react-awesome-reveal";
 import Lottie from "lottie-react";
+import axios from "axios";
 
 const AddCourse = () => {
     usePageTitle("Add Course");
@@ -31,9 +32,18 @@ const AddCourse = () => {
             createdAt: new Date().toISOString(),
         };
 
-        console.log(newCourse);
+        // console.log(newCourse);
 
-       
+        axios.post('http://localhost:3000/courses', newCourse)
+            .then(res => {
+                console.log(res.data);
+                toast.success("Course added successfully!");
+                navigate("/all-course"); // Adjust as needed
+            })
+            .catch(err => {
+                console.error(err);
+                toast.error("Failed to add course. Please check the server.");
+            });
     };
 
     return (
