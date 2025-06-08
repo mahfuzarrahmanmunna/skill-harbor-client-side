@@ -150,10 +150,10 @@ const AddCourse = () => {
                     <div className="md:col-span-2">
                         <button
                             type="submit"
-                            className="btn bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-semibold w-full text-lg tracking-wide shadow-lg"
+                            className="btn btn-outline bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-semibold w-full text-lg tracking-wide shadow-lg"
                             disabled={loading}
                         >
-                            {loading ? "Adding..." : "🚀 Add Course"}
+                            {loading ? "Adding..." : `Add Course`}
                         </button>
                     </div>
                 </form>
