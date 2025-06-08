@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -10,18 +9,7 @@ import { Fade } from "react-awesome-reveal";
 import { Sun, Moon, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 
-const slides = [
-    {
-        title: "Welcome to Our Course Platform",
-        subtitle: [
-            "Learn at your own pace",
-            "Top instructors",
-            "Flexible schedules",
-        ],
-        image:
-            "https://png.pngtree.com/thumb_back/fh260/background/20221226/pngtree-dark-green-financial-management-fund-course-learning-banner-background-image_1496024.jpg",
-    }
-];
+
 
 export default function BannerSlider() {
 
