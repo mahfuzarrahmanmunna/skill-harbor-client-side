@@ -6,6 +6,7 @@ import AddCourse from "../Pages/Course/AddCourse/AddCourse";
 import PrivateRoutes from "../Private/PrivateRoutes";
 import SignIn from "../Pages/SignIn/SignIn";
 import SignUp from "../Pages/SignUp/SignUp";
+import Fallback from "../Components/Fallback/Fallback";
 
 export const router = createBrowserRouter([
     {
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes>
                     <AllCourse />
                 </PrivateRoutes>,
+                hydrateFallbackElement: <Fallback />
             },
             {
                 path: '/add-course',

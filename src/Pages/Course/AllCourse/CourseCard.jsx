@@ -10,7 +10,7 @@ const CourseCard = ({ course }) => {
                     <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-600">Quisque</span>
                     <h2 className="text-xl font-semibold tracking-wide">{title}</h2>
                 </div>
-                <p className="dark:text-gray-800">Mauris et lorem at elit tristique dignissim et ullamcorper elit. In sed feugiat mi. Etiam ut lacinia dui.</p>
+                <p className="dark:text-gray-200 text-gray-800">Mauris et lorem at elit tristique dignissim et ullamcorper elit. In sed feugiat mi. Etiam ut lacinia dui.</p>
             </div>
         </div>
     );

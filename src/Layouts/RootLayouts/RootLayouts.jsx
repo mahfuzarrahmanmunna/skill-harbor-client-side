@@ -5,7 +5,7 @@ import { Outlet } from 'react-router';
 
 const RootLayouts = () => {
     return (
-        <div className="font-sans text-base text-gray-800 dark:text-gray-100 bg-gray-100 dark:bg-neutral-900 transition-colors duration-300 min-h-screen flex flex-col">
+        <div className="font-sans text-base text-gray-800 dark:text-gray-100 bg-gray-100 dark:bg-gray-800 transition-colors duration-300 min-h-screen flex flex-col">
             {/* Navbar */}
             <Navbar />
 

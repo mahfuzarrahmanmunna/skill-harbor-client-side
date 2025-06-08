@@ -33,7 +33,7 @@ const AddCourse = () => {
             title,
             description,
             image,
-            duration: duration.toLocaleDateString(),
+            duration: duration.toISOString(),
             fee,
             tags,
             createdBy: user?.displayName || "Anonymous",
