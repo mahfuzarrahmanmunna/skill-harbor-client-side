@@ -7,6 +7,7 @@ import PrivateRoutes from "../Private/PrivateRoutes";
 import SignIn from "../Pages/SignIn/SignIn";
 import SignUp from "../Pages/SignUp/SignUp";
 import Fallback from "../Components/Fallback/Fallback";
+import CourseDetails from "../Pages/Course/CourseDetails/CourseDetails";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,12 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes>
                     <AllCourse />
                 </PrivateRoutes>,
+                hydrateFallbackElement: <Fallback />
+            },
+            {
+                path: '/course-details/:id',
+                Component: CourseDetails,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/single-course/${params.id}`),
                 hydrateFallbackElement: <Fallback />
             },
             {

@@ -12,7 +12,7 @@ const AllCourse = () => {
             <h1 className='text-accent'>All Course here</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-12'>
                 {
-                    courses.map((course, index) =>
+                    courses?.map((course, index) =>
                         <CourseCard course={course} index={index} key={index} />
                     )
                 }

@@ -79,7 +79,7 @@ export default function BannerSlider() {
                 <SwiperSlide >
                     <div className="relative h-full w-full">
                         <img
-                            src="https://thumbs.dreamstime.com/b/education-technology-e-learning-online-training-webinar-seminar-knowledge-business-personal-development-144808360.jpg"
+                            src="https://i.ibb.co/mChWMZsb/pexels-tirachard-kumtanom-112571-733856.jpg"
                             alt="banner"
                             className="absolute inset-0 h-full w-full object-cover brightness-50"
                         />

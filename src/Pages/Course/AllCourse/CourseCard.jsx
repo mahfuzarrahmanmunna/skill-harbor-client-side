@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { Fade } from 'react-awesome-reveal';
 
 const CourseCard = ({ course, index = 0 }) => {
-    const { image, title, description = "No description available." } = course;
+    const { image, title, description = "No description available.", _id } = course || {};
 
     return (
         <Fade>
@@ -44,7 +44,7 @@ const CourseCard = ({ course, index = 0 }) => {
                         {description?.slice(0, 200)}...
                     </p>
                     <div>
-                        <Link className='btn btn-primary btn-outline'>
+                        <Link to={`/course-details/${_id}`} className='btn btn-primary btn-outline'>
                             See Details
                         </Link>
                     </div>
