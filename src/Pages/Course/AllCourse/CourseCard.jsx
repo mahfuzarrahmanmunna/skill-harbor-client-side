@@ -37,7 +37,7 @@ const CourseCard = ({ course, index = 0 }) => {
                 </div>
 
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    {description?.slice(0, 120)}...
+                    {description?.slice(0, 200)}...
                 </p>
             </div>
         </motion.div>
