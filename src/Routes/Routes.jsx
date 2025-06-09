@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes>
                     <ManageCourse />
                 </PrivateRoutes>,
-                loader: () => fetch(`${import.meta.env.VITE_API_URL}/course?email=${email}`)
+                // loader: () => fetch(`${import.meta.env.VITE_API_URL}/course?email=${email}`)
             },
             {
                 path: '/sign-up',
