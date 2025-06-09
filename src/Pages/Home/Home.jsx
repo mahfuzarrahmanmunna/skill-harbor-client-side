@@ -2,20 +2,42 @@ import usePageTitle from '../../Hooks/usePageTitle';
 import useAuth from '../../Hooks/useAuth';
 import Banner from '../../Components/Banner/Banner';
 import LatestCourse from '../../Components/LatestCourse/LatestCourse';
+import { Link } from 'react-router';
+import { motion } from 'framer-motion';
+import WhyChoseUs from './WhyChoseUs';
+import Instructor from './Instructor';
+import StudentSuccess from './StudentSuccess';
+import CTASection from './CTASection';
 
 const Home = () => {
-    usePageTitle()
-    const { user } = useAuth()
-    console.log(user);
+    usePageTitle('Home');
+    const { user } = useAuth();
+
     return (
         <div>
+            {/* Hero Banner */}
             <Banner />
-            <div className='flex justify-center my-12'>
-                {/* <iframe className='border rounded-2xl' width="560" height="315" src="https://www.youtube.com/embed/nNOQQGszHVA?si=xY7XvdN13jcATo9T" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe> */}
-            </div>
+
+            {/* Latest Course Section (Already added) */}
+            <LatestCourse />
+
+            {/* //why chose us section */}
             <div>
-                <LatestCourse />
+                <WhyChoseUs />
             </div>
+
+            {/* //Instructor section */}
+            <div>
+                <Instructor />
+            </div>
+
+            {/* Student Success Stories */}
+            <div>
+                <StudentSuccess />
+            </div>
+
+            {/* CTA Section */}
+            <CTASection />
         </div>
     );
 };

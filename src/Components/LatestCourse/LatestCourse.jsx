@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CourseCard from '../../Pages/Course/AllCourse/CourseCard';
 import { motion } from 'framer-motion';
 import NotLatest from './NotLatest';
+import { Fade } from 'react-awesome-reveal';
 
 const LatestCourse = () => {
     const [courses, setCourses] = useState([]);
@@ -69,7 +70,12 @@ const LatestCourse = () => {
                                 variants={cardVariants}
                                 transition={{ duration: 0.5, ease: 'easeOut' }}
                             >
-                                <CourseCard course={course} index={idx} />
+                                <Fade
+                                    direction='up'
+                                    delay={idx * 100}
+                                >
+                                    <CourseCard course={course} index={idx} />
+                                </Fade>
                             </motion.div>
                         ))}
                     </motion.div>

@@ -1,4 +1,5 @@
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const Footer = () => {
     return (
@@ -14,13 +15,13 @@ const Footer = () => {
                         <a href="https://www.facebook.com/profile.php?id=61558381851640" target='_blank' className="hover:text-blue-600">
                             <FaFacebookF />
                         </a>
-                        <a href="#" className="hover:text-sky-400">
+                        <a href="https://x.com/mahfuzar_m35559" target='_blank' className="hover:text-sky-400">
                             <FaTwitter />
                         </a>
-                        <a href="#" className="hover:text-pink-500">
+                        <a href="https://www.instagram.com/md.mahfuzarrahmanmunna/" target='_blank' className="hover:text-pink-500">
                             <FaInstagram />
                         </a>
-                        <a href="#" className="hover:text-blue-500">
+                        <a href="https://www.linkedin.com/in/md-mahfuzar-rahman-munna-41a342351/" target='_blank' className="hover:text-blue-500">
                             <FaLinkedinIn />
                         </a>
                     </div>
@@ -30,7 +31,7 @@ const Footer = () => {
                 <div>
                     <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Explore</h3>
                     <ul className="space-y-2">
-                        <li><a href="#" className="hover:text-blue-500">Courses</a></li>
+                        <li><Link to='/all-course' className="hover:text-blue-500">Courses</Link></li>
                         <li><a href="#" className="hover:text-blue-500">Pricing</a></li>
                         <li><a href="#" className="hover:text-blue-500">About Us</a></li>
                     </ul>
@@ -48,7 +49,7 @@ const Footer = () => {
             </div>
 
             <div className="text-center text-sm text-gray-500 dark:text-gray-400 mt-10 border-t pt-6 border-gray-300 dark:border-gray-700">
-                &copy; {new Date().getFullYear()} EduCraft. All rights reserved.
+                &copy; {new Date().getFullYear()} SkillHarbor. All rights reserved.
             </div>
         </footer>
     );
