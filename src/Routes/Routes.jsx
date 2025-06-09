@@ -8,11 +8,13 @@ import SignIn from "../Pages/SignIn/SignIn";
 import SignUp from "../Pages/SignUp/SignUp";
 import Fallback from "../Components/Fallback/Fallback";
 import CourseDetails from "../Pages/Course/CourseDetails/CourseDetails";
+import ErrorPage from "../Error/ErrorPage";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         Component: RootLayouts,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
