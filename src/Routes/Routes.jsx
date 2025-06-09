@@ -10,6 +10,7 @@ import Fallback from "../Components/Fallback/Fallback";
 import CourseDetails from "../Pages/Course/CourseDetails/CourseDetails";
 import ErrorPage from "../Error/ErrorPage";
 import ManageCourse from "../Pages/Course/ManageCourse/ManageCourse";
+import UpdateManagePost from "../Pages/Course/ManageCourse/UpdateManagePost";
 
 export const router = createBrowserRouter([
     {
@@ -47,6 +48,13 @@ export const router = createBrowserRouter([
                     <ManageCourse />
                 </PrivateRoutes>,
                 // loader: () => fetch(`${import.meta.env.VITE_API_URL}/course?email=${email}`)
+            },
+            {
+                path: '/edit-my-posted-course/:id',
+                element: <PrivateRoutes>
+                    <UpdateManagePost />
+                </PrivateRoutes>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/single-course/${params.id}`)
             },
             {
                 path: '/sign-up',

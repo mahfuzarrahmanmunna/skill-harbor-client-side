@@ -9,7 +9,6 @@ const ManageCourse = () => {
 
     return (
         <div>
-            <h1>Mange Course</h1>
             <Suspense fallback={<Fallback />}>
                 <ManageCourseTable manageCoursePromise={ManageApi(user?.email)} />
             </Suspense>
