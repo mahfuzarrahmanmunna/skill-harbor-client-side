@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { motion } from "framer-motion"; // ✅ fix incorrect import path
+import DetailsError from "../../../Error/DetailsError";
 
 const CourseDetails = () => {
     const course = useLoaderData();
+    const { id } = useParams()
     const { user } = useAuth();
     const [isEnrolled, setIsEnrolled] = useState(false);
 
-    console.log(course);
+    // console.log(id);
+    // console.log(course._id);
+    
     // 🔍 Check if user already enrolled
     useEffect(() => {
         if (user?.email) {
@@ -49,6 +53,10 @@ const CourseDetails = () => {
                 console.error(err);
             });
     };
+
+    if (id !== course?._id) {
+        return <DetailsError />
+    }
 
     return (
         <motion.div
