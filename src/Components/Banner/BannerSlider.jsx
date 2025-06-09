@@ -64,7 +64,6 @@ export default function BannerSlider() {
                                 <motion.div
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
-                                    onHoverStart={() => console.log('hover started')}
                                 >
                                     <Link
                                         to='/sign-in' className="px-8 btn btn-white btn-outline">
@@ -159,7 +158,6 @@ export default function BannerSlider() {
                                 <motion.div
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
-                                    onHoverStart={() => console.log('hover started')}
                                 >
                                     <Link
                                         to='/all-course' className="px-8 btn btn-white btn-outline">

@@ -28,15 +28,17 @@ const AddCourse = () => {
         const category = form.category.value;
         // const duration = form.duration.value;
         const fee = form.fee.value;
+        const totalSeat = form.seat.value;
         const tags = form.tags.value?.split(",")?.map(tag => tag.trim()).filter(Boolean);
 
-        // console.log(category);
+        console.log(totalSeat);
         const newCourse = {
             title,
             description,
             image,
             duration: duration.toISOString(),
             fee,
+            totalSeat,
             tags,
             category,
             createdBy: user?.displayName || "Anonymous",
@@ -47,6 +49,7 @@ const AddCourse = () => {
 
         axios.post('http://localhost:3000/courses', newCourse)
             .then(res => {
+                console.log(res);
                 toast.success("🎉 Course added successfully!");
                 navigate("/all-course");
             })
@@ -144,6 +147,17 @@ const AddCourse = () => {
                             type="text"
                             name="category"
                             placeholder="e.g. React, Frontend, Web Dev"
+                            className="input input-bordered w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 ring-primary"
+                        />
+                    </div>
+
+                    {/* Total Seat */}
+                    <div className="fieldset">
+                        <label className="block mb-1 font-semibold text-slate-800 dark:text-slate-200 label">Total Seat</label>
+                        <input
+                            type="text"
+                            name="seat"
+                            placeholder="e.g. 250"
                             className="input input-bordered w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 ring-primary"
                         />
                     </div>

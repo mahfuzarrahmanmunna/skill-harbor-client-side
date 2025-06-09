@@ -11,7 +11,7 @@ import useAuth from '../../Hooks/useAuth';
 const SignIn = () => {
     usePageTitle()
     const { signInPass, signinWithGoogle } = useAuth()
-    console.log(signInPass);
+    // console.log(signInPass);
 
     const provider = new GoogleAuthProvider();
 

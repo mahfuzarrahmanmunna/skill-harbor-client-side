@@ -5,7 +5,7 @@ import Fallback from '../Components/Fallback/Fallback';
 
 const PrivateRoutes = ({ children }) => {
     const { user, loading } = useAuth()
-    console.log(user, loading);
+    // console.log(user, loading);
     const location = useLocation()
 
     if (loading) {
