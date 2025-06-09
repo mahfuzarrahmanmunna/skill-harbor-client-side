@@ -1,17 +1,63 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import { Pencil, Trash2 } from 'lucide-react';
 import { Link } from 'react-router';
+import { Toaster } from 'react-hot-toast';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ManageCourseTable = ({ manageCoursePromise }) => {
-    const courses = use(manageCoursePromise);
+    const initialCourses = use(manageCoursePromise);
+    const [courses, setCourses] = useState(initialCourses);
+
+    const handleDeleteManageCourse = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`${import.meta.env.VITE_API_URL}/single-course/${id}`)
+                    .then(res => {
+                        if (res.status === 200 || res.data?.deletedCount > 0) {
+                            // Update the local state to remove deleted course
+                            setCourses(prev => prev.filter(course => course._id !== id));
+
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Course has been deleted successfully.",
+                                icon: "success"
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Failed!",
+                                text: "Something went wrong. Try again.",
+                                icon: "error"
+                            });
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Something went wrong while deleting.",
+                            icon: "error"
+                        });
+                    });
+            }
+        });
+    };
 
     return (
         <div className="max-w-6xl mx-auto my-16 px-4">
             {/* Title with Typewriter */}
             <motion.h2
-                className="text-4xl font-extrabold text-center mb-10 bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-emerald-500 bg-clip-text text-transparent"
+                className="md:text-4xl text-xl font-extrabold text-center mb-10 bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-emerald-500 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -26,6 +72,7 @@ const ManageCourseTable = ({ manageCoursePromise }) => {
                     }}
                 />
             </motion.h2>
+            <Toaster />
 
             {/* Table Container */}
             <motion.div
@@ -70,6 +117,7 @@ const ManageCourseTable = ({ manageCoursePromise }) => {
                                     <button
                                         className="text-red-600 btn btn-xs btn-outline hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 transition duration-200"
                                         title="Delete"
+                                        onClick={() => handleDeleteManageCourse(course?._id)}
                                     >
                                         <Trash2 size={18} />
                                     </button>
