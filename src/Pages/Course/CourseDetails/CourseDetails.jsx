@@ -73,10 +73,10 @@ const CourseDetails = () => {
                     onClick={handleEnroll}
                     className={`btn btn-accent px-6 py-2 text-white font-semibold rounded-lg shadow-md 
                         ${!user ? "opacity-50 cursor-not-allowed" : ""}
-                        ${isEnrolled ? "bg-green-500 hover:bg-green-500" : "bg-primary hover:bg-accent"}
+                        ${isEnrolled ? "bg-green-500 hover:bg-green-500" : "bg-primary btn-outline hover:bg-accent"}
                     `}
                 >
-                    {isEnrolled ? "✅ Enrolled" : "Enroll Now"}
+                    {isEnrolled ? "Enrolled" : "Enroll Now"}
                 </button>
                 {!user && (
                     <p className="text-red-500 mt-2 text-sm"> Please log in to enroll in this course.</p>
