@@ -1,50 +1,81 @@
 import React, { useEffect, useState } from 'react';
 import CourseCard from '../../Pages/Course/AllCourse/CourseCard';
+import { motion } from 'framer-motion';
+import NotLatest from './NotLatest';
 
 const LatestCourse = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/latest-course')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setCourses(data);
-            })
-            .catch(err => {
-                console.error("Error fetching latest courses:", err);
-            });
+        fetch(`${import.meta.env.VITE_API_URL}/latest-course`)
+            .then((res) => res.json())
+            .then((data) => setCourses(data))
+            .catch((err) => console.error("Error fetching latest courses:", err));
     }, []);
 
-    return (
-        <div className="max-w-6xl mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-6">Latest Courses</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {courses ? (
+    // Animation variants
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.15,
+            },
+        },
+    };
 
-                    courses.map((course, idx) => (
-                        <CourseCard course={course} index={idx} key={idx} />
-                    ))
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0 },
+    };
+
+    return (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+            {/* Animated Heading */}
+            <motion.h1
+                className="text-4xl sm:text-5xl font-extrabold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-pink-500 to-emerald-500"
+                animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                }}
+                style={{ backgroundSize: '200% 200%' }}
+            >
+                ✨ Latest Courses
+            </motion.h1>
+
+            {/* Subheading */}
+            <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10 text-lg">
+                Discover our most recent content curated by top experts to boost your learning journey.
+            </p>
+
+            {/* No Courses */}
+            <div>
+                {courses.length === 0 ? (
+                    <NotLatest />
                 ) : (
-                    <div className="col-span-3 w-full">
-                        <motion.div
-                            className="bg-gradient-to-r col-span-3 from-white to-gray-100 dark:from-neutral-700 dark:to-neutral-800 border border-dashed border-gray-300 dark:border-neutral-500 rounded-2xl p-8 shadow-inner text-center flex flex-col items-center justify-center space-y-4"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            <Sparkles size={48} className="text-indigo-500 dark:text-indigo-400 animate-pulse" />
-                            <h2 className="text-xl font-semibold text-gray-700 dark:text-white">
-                                No Featured Tasks
-                            </h2>
-                            <p className="text-gray-500 dark:text-gray-300 max-w-sm">
-                                There are currently no featured tasks available. Please check back later or explore other categories.
-                            </p>
-                        </motion.div>
-                    </div>
+                    // Cards Grid with Staggered Animation
+                    <motion.div
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        {courses.map((course, idx) => (
+                            <motion.div
+                                key={idx}
+                                variants={cardVariants}
+                                transition={{ duration: 0.5, ease: 'easeOut' }}
+                            >
+                                <CourseCard course={course} index={idx} />
+                            </motion.div>
+                        ))}
+                    </motion.div>
                 )}
             </div>
-        </div>
+        </section>
     );
 };
 
