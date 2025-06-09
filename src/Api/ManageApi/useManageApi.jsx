@@ -1,7 +1,6 @@
 import React from 'react';
 
-const ManageCourse = () => {
-    
+const useManageApi = () => {
     return (
         <div>
             
@@ -9,4 +8,4 @@ const ManageCourse = () => {
     );
 };
 
-export default ManageCourse;
+export default useManageApi;
