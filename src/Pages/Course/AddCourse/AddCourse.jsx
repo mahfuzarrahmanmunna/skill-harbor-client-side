@@ -26,7 +26,7 @@ const AddCourse = () => {
         const image = form.image.value;
         const category = form.category.value;
         const fee = form.fee.value;
-        const totalSeat = form.seat.value;
+        const totalSeat = form.totalSeat.value;
         const tags = form.tags.value?.split(",")?.map(tag => tag.trim()).filter(Boolean);
         const level = form.level.value;
         const language = form.language.value;
@@ -118,7 +118,7 @@ const AddCourse = () => {
 
                         <div className="fieldset">
                             <label className="block mb-1 font-semibold">Total Seat</label>
-                            <input type="number" name="seat" placeholder="e.g. 250" className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
+                            <input type="number" name="totalSeat" placeholder="e.g. 250" className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
                         </div>
 
                         <div className="fieldset">

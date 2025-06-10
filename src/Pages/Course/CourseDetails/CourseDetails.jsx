@@ -36,7 +36,7 @@ const CourseDetails = () => {
 
         const enrollInfo = {
             enrollId: _id,
-            customerEmail: email,
+            customerEmail: user?.email,
         };
 
         await axios
@@ -46,11 +46,15 @@ const CourseDetails = () => {
                     ...prev,
                     totalSeat: prev.totalSeat - 1,
                 }));
+                // if (data.data.acknowledged) {
+                //     setIsEnrolled(!isEnrolled)
+                // }
+                console.log(data);
                 setIsEnrolled(true);
                 toast.success("Enrolled successfully!");
             })
             .catch((err) => {
-                toast.error("Enrollment failed.");
+                toast.error("Enrollment failed.", err.message);
             });
     };
 

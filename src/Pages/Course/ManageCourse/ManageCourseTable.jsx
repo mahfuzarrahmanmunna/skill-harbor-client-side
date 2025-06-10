@@ -6,10 +6,12 @@ import { Link } from 'react-router';
 import { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import NoCourseFound from './NoCourseFound';
 
 const ManageCourseTable = ({ manageCoursePromise }) => {
     const initialCourses = use(manageCoursePromise);
     const [courses, setCourses] = useState(initialCourses);
+    console.log(courses.length);
 
     const handleDeleteManageCourse = (id) => {
         Swal.fire({
@@ -52,6 +54,9 @@ const ManageCourseTable = ({ manageCoursePromise }) => {
             }
         });
     };
+    if (courses.length <= 0) {
+        return <NoCourseFound />
+    }
 
     return (
         <div className="max-w-6xl mx-auto my-16 px-4">
