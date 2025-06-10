@@ -39,7 +39,7 @@ const Instructor = () => {
                     delay={300}
                 >
                     <div className="p-4 bg-white dark:bg-neutral-900 rounded-xl shadow-md border dark:border-neutral-700 text-center">
-                        <img src={`https://i.pravatar.cc/150?img=11`} alt="Instructor" className="mx-auto w-24 h-24 rounded-full mb-4" />
+                        <img src={`https://i.pravatar.cc/150?img=13`} alt="Instructor" className="mx-auto w-24 h-24 rounded-full mb-4" />
                         <h4 className="font-semibold text-lg">Abdullah Al</h4>
                         <p className="text-sm text-gray-500 dark:text-gray-300">Backend Developer | 6+ years experience</p>
                     </div>

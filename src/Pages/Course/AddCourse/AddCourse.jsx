@@ -48,6 +48,8 @@ const AddCourse = () => {
             email: user?.email,
             createdAt: new Date().toLocaleString(),
         };
+        newCourse.enrolledBy = []
+        console.log(newCourse);
 
         axios.post('http://localhost:3000/courses', newCourse)
             .then(res => {

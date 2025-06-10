@@ -3,20 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router';
 
 const CTASection = () => {
-    // Define an array of gradient classes
-    // const gradients = [
-    //     'from-indigo-500 via-purple-500 to-pink-500',
-    //     'from-green-400 via-blue-500 to-purple-600',
-    //     'from-amber-500 via-orange-600 to-yellow-500',
-    //     'from-rose-500 via-red-400 to-pink-400',
-    //     'from-cyan-500 via-blue-500 to-indigo-600',
-    // ];
-
-    // // Use useMemo to avoid new random gradient every re-render
-    // const randomGradient = useMemo(() => {
-    //     const index = Math.floor(Math.random() * gradients.length);
-    //     return gradients[index];
-    // }, []);
 
     return (
         <motion.section
