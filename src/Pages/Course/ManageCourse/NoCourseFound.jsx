@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import { Fade } from "react-awesome-reveal";
-// import Lottie from "lottie-react";
-// import noCourseAnimation from "../../assets/lottie/no-course.json"; // Download and place it in your assets
 import { Link } from "react-router-dom";
 import { FileX } from "lucide-react";
 
@@ -13,9 +11,6 @@ const NoCourseFound = () => {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center justify-center min-h-[60vh] text-center px-6"
         >
-            <div className="w-64 md:w-96 mb-6">
-                {/* <Lottie animationData={noCourseAnimation} loop autoplay /> */}
-            </div>
 
             <Fade direction="up" triggerOnce>
                 <h2 className="text-3xl font-bold text-gray-700 dark:text-gray-200 mb-4 flex items-center justify-center gap-2">

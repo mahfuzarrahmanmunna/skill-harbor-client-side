@@ -11,6 +11,7 @@ import CourseDetails from "../Pages/Course/CourseDetails/CourseDetails";
 import ErrorPage from "../Error/ErrorPage";
 import ManageCourse from "../Pages/Course/ManageCourse/ManageCourse";
 import UpdateManagePost from "../Pages/Course/ManageCourse/UpdateManagePost";
+import MyEnrolledCourse from "../Pages/Course/MyEnrolledCourse/MyEnrolledCourse";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +49,12 @@ export const router = createBrowserRouter([
                     <ManageCourse />
                 </PrivateRoutes>,
                 // loader: () => fetch(`${import.meta.env.VITE_API_URL}/course?email=${email}`)
+            },
+            {
+                path: '/my-enrolled-course',
+                element: <PrivateRoutes>
+                    <MyEnrolledCourse />
+                </PrivateRoutes>
             },
             {
                 path: '/edit-my-posted-course/:id',

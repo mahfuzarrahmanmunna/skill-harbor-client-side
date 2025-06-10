@@ -71,6 +71,11 @@ const Navbar = () => {
                             Manage Course
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/my-enrolled-course" className={navLinkClass}>
+                            My Enrolled Course
+                        </NavLink>
+                    </li>
                 </>
             )}
         </>
