@@ -12,50 +12,46 @@ const CourseDetails = () => {
     const [course, setCourse] = useState(data);
     const { id } = useParams();
     const { user } = useAuth();
-    console.log(user);
+    // console.log(user);
     const {
         category, createdAt, createdBy, description, duration, email,
         image, language, level, mode, tags, fee, title,
-        totalSeat, enrolledBy = [], updatedAt, seat, _id
+        totalSeat, enrolledBy = [], _id
     } = course || {};
-    console.log(course);
+    // console.log(course);
 
-    const [isEnrolled, setIsEnrolled] = useState(false);
+    const [enrolled, setEnrolled] = useState(false);
 
     useEffect(() => {
         if (user && enrolledBy?.includes(user.email)) {
-            setIsEnrolled(true);
+            setEnrolled(true);
         }
     }, [user, enrolledBy]);
 
     const handleEnrolledButton = async () => {
         if (!user) return toast.error("You must be logged in to enroll.");
         if (user?.email === email) return toast.error("You can't enroll in your own course!");
-        if (isEnrolled) return toast.error("Already enrolled.");
-        if (seat === 0) return toast.error("No seats available.");
 
         const enrollInfo = {
             enrollId: _id,
             customerEmail: user?.email,
         };
 
-        await axios
-            .post(`http://localhost:3000/course-order/${_id}`, enrollInfo)
-            .then((data) => {
-                setCourse((prev) => ({
-                    ...prev,
-                    totalSeat: prev.totalSeat - 1,
-                }));
-                // if (data.data.acknowledged) {
-                //     setIsEnrolled(!isEnrolled)
-                // }
-                console.log(data);
-                setIsEnrolled(true);
-                toast.success("Enrolled successfully!");
-            })
-            .catch((err) => {
-                toast.error("Enrollment failed.", err.message);
-            });
+        try {
+            const response = await axios.post(`http://localhost:3000/course-order/${_id}`, enrollInfo);
+            const { enrolled: nowEnrolled, message } = response.data;
+
+            // Update UI state
+            setEnrolled(nowEnrolled);
+            setCourse((prev) => ({
+                ...prev,
+                totalSeat: nowEnrolled ? prev.totalSeat - 1 : prev.totalSeat + 1,
+            }));
+
+            toast.success(message);
+        } catch (err) {
+            toast.error(err.response?.data?.message || "Something went wrong.");
+        }
     };
 
     if (id !== course?._id) return <DetailsError />;
@@ -101,15 +97,15 @@ const CourseDetails = () => {
 
             <div className="mt-8">
                 <button
-                    disabled={!user || isEnrolled || seat === 0}
+                    disabled={!user || (totalSeat <= 0 && !enrolled)}
                     onClick={handleEnrolledButton}
                     className={`btn px-6 py-2 text-white font-semibold rounded-lg shadow-md
-                        ${!user || isEnrolled || seat === 0 ? "opacity-50 cursor-not-allowed" : ""}
-                        ${isEnrolled ? "bg-green-600 hover:bg-green-600" : "bg-primary btn-outline hover:bg-accent"}
-                    `}
+                    ${(!user || (totalSeat <= 0 && !enrolled)) ? "opacity-50 cursor-not-allowed" : ""}
+                    ${enrolled ? "bg-red-600 hover:bg-red-700" : "bg-primary btn-outline hover:bg-accent"}`}
                 >
-                    {isEnrolled ? " Enrolled" : seat === 0 ? "No seats left" : "Enroll Now"}
+                    {enrolled ? "Unenroll" : totalSeat <= 0 ? "No seats left" : "Enroll Now"}
                 </button>
+
                 {!user && <p className="text-red-500 mt-2 text-sm">Please log in to enroll.</p>}
             </div>
 
