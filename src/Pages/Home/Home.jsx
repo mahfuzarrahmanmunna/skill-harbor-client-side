@@ -8,6 +8,7 @@ import WhyChoseUs from './WhyChoseUs';
 import Instructor from './Instructor';
 import StudentSuccess from './StudentSuccess';
 import CTASection from './CTASection';
+import PopularCourse from '../Course/PopularCourse/PopularCourse';
 
 const Home = () => {
     usePageTitle('Home');
@@ -20,6 +21,9 @@ const Home = () => {
 
             {/* Latest Course Section (Already added) */}
             <LatestCourse />
+
+            {/* Popular Courses */}
+            <PopularCourse />
 
             {/* //why chose us section */}
             <div>

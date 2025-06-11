@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Typewriter from 'typewriter-effect';
 import { Link } from 'react-router';
 import { Fade } from 'react-awesome-reveal';
 
@@ -27,15 +26,6 @@ const CourseCard = ({ course, index = 0 }) => {
                         <span className="block text-xs font-semibold tracking-widest uppercase text-accent">Featured</span>
 
                         <h2 className="text-xl font-bold text-slate-800 dark:text-white">
-                            {/* <Typewriter
-                        // options={{
-                        //     strings: [title, ""],
-                        //     autoStart: true,
-                        //     loop: true,
-                        //     delay: 40,
-                        //     deleteSpeed: 25,
-                        // }}
-                        /> */}
                             {title}
                         </h2>
                     </div>
