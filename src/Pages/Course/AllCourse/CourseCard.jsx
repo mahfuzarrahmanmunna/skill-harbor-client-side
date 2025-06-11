@@ -1,10 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from "motion/react"
 import { Link } from 'react-router';
 import { Fade } from 'react-awesome-reveal';
 
 const CourseCard = ({ course, index = 0 }) => {
-    const { image, title, description = "No description available.", _id } = course || {};
+    const { image, title, tags, description = "No description available.", _id } = course || {};
 
     return (
         <Fade>
@@ -23,7 +23,11 @@ const CourseCard = ({ course, index = 0 }) => {
                     />
 
                     <div className="mb-3">
-                        <span className="block text-xs font-semibold tracking-widest uppercase text-accent">Featured</span>
+                        <span className="block text-xs font-semibold tracking-widest uppercase text-accent">{
+                            tags.map(tag =>
+                                <div key={tag} className="badge badge-soft badge-success bg-gray-50"># {tag}</div>
+                            )
+                        }</span>
 
                         <h2 className="text-xl font-bold text-slate-800 dark:text-white">
                             {title}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Fade } from 'react-awesome-reveal';
-import { motion } from 'framer-motion';
+import { motion } from "motion/react"
 import { Link } from 'react-router-dom'; // ✅ Fix import
 import Fallback from '../../../Components/Fallback/Fallback';
 

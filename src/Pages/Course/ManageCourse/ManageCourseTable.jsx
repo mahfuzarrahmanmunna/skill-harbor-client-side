@@ -1,5 +1,5 @@
 import React, { use, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from "motion/react"
 import Typewriter from 'typewriter-effect';
 import { Pencil, Trash2 } from 'lucide-react';
 import { Link } from 'react-router';

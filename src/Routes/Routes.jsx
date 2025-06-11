@@ -26,9 +26,7 @@ export const router = createBrowserRouter([
             {
                 path: '/all-course',
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/courses`),
-                element: <PrivateRoutes>
-                    <AllCourse />
-                </PrivateRoutes>,
+                Component: AllCourse,
                 hydrateFallbackElement: <Fallback />
             },
             {

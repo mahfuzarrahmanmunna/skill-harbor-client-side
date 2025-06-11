@@ -1,6 +1,6 @@
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
-import { motion } from 'framer-motion';
+import { motion } from "motion/react"
 import Typewriter from 'typewriter-effect';
 import { Link } from 'react-router-dom';
 import { BiLeftArrow } from 'react-icons/bi';

@@ -3,7 +3,7 @@ import useAuth from '../../Hooks/useAuth';
 import Banner from '../../Components/Banner/Banner';
 import LatestCourse from '../../Components/LatestCourse/LatestCourse';
 import { Link } from 'react-router';
-import { motion } from 'framer-motion';
+import { motion } from "motion/react"
 import WhyChoseUs from './WhyChoseUs';
 import Instructor from './Instructor';
 import StudentSuccess from './StudentSuccess';

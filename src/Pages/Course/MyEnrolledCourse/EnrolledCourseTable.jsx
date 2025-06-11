@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from "motion/react"
 import { Fade, Slide } from 'react-awesome-reveal';
 import Typewriter from 'typewriter-effect';
 import { FaBookOpen, FaChalkboardTeacher, FaMoneyBillWave } from 'react-icons/fa';
