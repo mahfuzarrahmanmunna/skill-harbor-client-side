@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Fade, Slide } from 'react-awesome-reveal';
 import Typewriter from 'typewriter-effect';
 import { FaBookOpen, FaChalkboardTeacher, FaMoneyBillWave } from 'react-icons/fa';
 import CourseTable from './CourseTable';
 import { ActivityIcon } from 'lucide-react';
+import NoMyCourse from './NoMyCourse';
 
 const EnrolledCourseTable = ({ enrolledCoursePromiseApi }) => {
-    const [courses, setCourses] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const initialCourses = use(enrolledCoursePromiseApi)
+    const [courses, setCourses] = useState(initialCourses);
 
-    useEffect(() => {
-        enrolledCoursePromiseApi
-            .then(data => setCourses(data))
-            .catch(err => console.error("Error loading courses:", err))
-            .finally(() => setLoading(false));
-    }, [enrolledCoursePromiseApi]);
+
+    if (courses.length <= 0) {
+        return <NoMyCourse />
+    }
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-12">
@@ -37,19 +36,10 @@ const EnrolledCourseTable = ({ enrolledCoursePromiseApi }) => {
                 </p>
             </Fade>
 
-            {/* Loading Spinner */}
-            {loading && (
-                <motion.div
-                    className="text-center text-lg text-gray-600 dark:text-gray-200"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                >
-                    Loading your enrolled courses...
-                </motion.div>
-            )}
+
 
             {/* Table Display */}
-            {!loading && courses.length > 0 && (
+            {courses.length > 0 && (
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -76,15 +66,6 @@ const EnrolledCourseTable = ({ enrolledCoursePromiseApi }) => {
                     </table>
 
                 </motion.div>
-            )}
-
-            {/* No Courses Message */}
-            {!loading && courses.length === 0 && (
-                <Fade direction="up" triggerOnce>
-                    <div className="text-center text-gray-500 dark:text-gray-300 mt-10">
-                        <p>No courses enrolled yet. Explore and start learning today!</p>
-                    </div>
-                </Fade>
             )}
         </div>
     );

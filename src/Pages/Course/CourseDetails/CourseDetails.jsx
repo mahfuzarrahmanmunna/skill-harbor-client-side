@@ -12,7 +12,7 @@ const CourseDetails = () => {
     const [course, setCourse] = useState(data);
     const { id } = useParams();
     const { user } = useAuth();
-
+    console.log(user);
     const {
         category, createdAt, createdBy, description, duration, email,
         image, language, level, mode, tags, fee, title,
@@ -79,11 +79,10 @@ const CourseDetails = () => {
                     <p><strong>🎓 Level:</strong> {level}</p>
                     <p><strong>🧠 Category:</strong> {category}</p>
                     <p><strong>🌍 Language:</strong> {language}</p>
-                    <p><strong>💻 Mode:</strong> {mode}</p>
                 </div>
                 <div>
                     <p><strong>📅 Created At:</strong> {new Date(createdAt).toLocaleString()}</p>
-                    <p><strong>📈 Updated At:</strong> {new Date(updatedAt).toLocaleDateString()}</p>
+                    <p><strong>💻 Mode:</strong> {mode}</p>
                     <p><strong>🧑 Instructor:</strong> {createdBy}</p>
                     <p><strong>✉️ Contact Email:</strong> {email}</p>
                     {/* <p><strong>🎟️ Total Seats:</strong> {totalSeat}</p> */}
