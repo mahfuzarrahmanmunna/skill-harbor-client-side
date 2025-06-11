@@ -54,7 +54,8 @@ export const router = createBrowserRouter([
                 path: '/my-enrolled-course',
                 element: <PrivateRoutes>
                     <MyEnrolledCourse />
-                </PrivateRoutes>
+                </PrivateRoutes>,
+                loader: ()=>fetch(`${import.meta.env.VITE_API_URL}/`)
             },
             {
                 path: '/edit-my-posted-course/:id',
