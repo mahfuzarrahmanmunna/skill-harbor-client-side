@@ -18,7 +18,7 @@ const CourseDetails = () => {
         image, language, level, mode, tags, fee, title,
         totalSeat, enrolledBy = [], updatedAt, seat, _id
     } = course || {};
-    console.log(totalSeat);
+    console.log(course);
 
     const [isEnrolled, setIsEnrolled] = useState(false);
 
@@ -66,7 +66,7 @@ const CourseDetails = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="max-w-5xl my-12 mx-auto px-6 py-10 bg-white/30 dark:bg-slate-900/40 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-200 dark:border-slate-700"
+            className="max-w-5xl my-12 lg:mx-auto md:mx-12 px-6 mx-6 py-10 bg-white/30 dark:bg-slate-900/40 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-200 dark:border-slate-700"
         >
             <img src={image} alt={title} className="w-full h-80 object-cover rounded-xl mb-6" />
             <h1 className="text-4xl font-bold text-accent mb-2">{title}</h1>
@@ -86,8 +86,8 @@ const CourseDetails = () => {
                     <p><strong>📈 Updated At:</strong> {new Date(updatedAt).toLocaleDateString()}</p>
                     <p><strong>🧑 Instructor:</strong> {createdBy}</p>
                     <p><strong>✉️ Contact Email:</strong> {email}</p>
-                    <p><strong>🎟️ Total Seats:</strong> {totalSeat}</p>
-                    <p><strong>📥 Available Seats:</strong> {seat}</p>
+                    {/* <p><strong>🎟️ Total Seats:</strong> {totalSeat}</p> */}
+                    <p><strong>📥 Available Seats:</strong> {totalSeat}</p>
                 </div>
             </div>
 
@@ -109,7 +109,7 @@ const CourseDetails = () => {
                         ${isEnrolled ? "bg-green-600 hover:bg-green-600" : "bg-primary btn-outline hover:bg-accent"}
                     `}
                 >
-                    {isEnrolled ? "✅ Enrolled" : seat === 0 ? "Full" : "Enroll Now"}
+                    {isEnrolled ? " Enrolled" : seat === 0 ? "No seats left" : "Enroll Now"}
                 </button>
                 {!user && <p className="text-red-500 mt-2 text-sm">Please log in to enroll.</p>}
             </div>

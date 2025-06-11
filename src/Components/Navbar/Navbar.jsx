@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import ThemeSwitch from "../../Context/Theme/ThemeSwitch";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
@@ -11,6 +11,7 @@ const Navbar = () => {
     const { user, logOutUser } = useAuth();
     const [showNavbar, setShowNavbar] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const navigate = useNavigate()
 
     // Scroll detection for hide/show
     useEffect(() => {
@@ -39,6 +40,7 @@ const Navbar = () => {
                 showConfirmButton: false,
                 timer: 1500,
             });
+            navigate('/sign-in')
         });
     };
 
