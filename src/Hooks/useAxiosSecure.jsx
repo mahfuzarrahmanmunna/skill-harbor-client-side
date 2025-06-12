@@ -3,34 +3,32 @@ import useAuth from './useAuth';
 
 const axiosInstance = axios.create({
     baseURL: 'http://localhost:3000/',
-    withCredentials: true
-})
+    withCredentials: true,
+});
 
 const useAxiosSecure = () => {
     const { user, logOutUser } = useAuth();
+
     axiosInstance.interceptors.request.use((config) => {
-        config.headers.authorization = `Bearer $${user.accessToken}`;
+        if (user?.accessToken) {
+            config.headers.authorization = `Bearer ${user.accessToken}`;
+        }
         return config;
     });
 
-    axiosInstance.interceptors.response.use(response => {
-        return response
-    }, error => {
-        console.log(error);
-        if (error.status === 401 || error.status === 403) {
-            return logOutUser().then(() => {
-                console.log('sign out user for 401 code');
-            })
-                .catch(err => {
-                    console.log(err);
-                })
+    axiosInstance.interceptors.response.use(
+        (response) => response,
+        (error) => {
+            if (error.response?.status === 401 || error.response?.status === 403) {
+                return logOutUser().then(() => {
+                    console.log('Signed out due to 401/403');
+                });
+            }
+            return Promise.reject(error);
         }
-    })
-    return (
-        <div>
-
-        </div>
     );
+
+    return axiosInstance; // ✅ Fix: return axios client
 };
 
 export default useAxiosSecure;

@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { use, useState } from 'react';
 import { motion } from "motion/react"
 import { Fade, Slide } from 'react-awesome-reveal';
 import Typewriter from 'typewriter-effect';
