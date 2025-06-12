@@ -148,7 +148,7 @@ const Navbar = () => {
                                         <NavLink to="/sign-in" className="btn btn-sm btn-outline btn-primary">
                                             Signin
                                         </NavLink>
-                                        <NavLink to="/sign-up" className="btn btn-sm btn-primary">
+                                        <NavLink to="/sign-up" className="btn btn-sm btn-primary md:flex hidden">
                                             Signup
                                         </NavLink>
                                     </div>

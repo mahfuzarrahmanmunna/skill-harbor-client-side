@@ -10,16 +10,18 @@ import Swal from 'sweetalert2';
 import usePageTitle from '../../Hooks/usePageTitle';
 import toast, { Toaster } from 'react-hot-toast';
 import useAuth from '../../Hooks/useAuth';
-// import signupAnimation from '../assets/signup-lottie.json'; // Add a relevant Lottie animation JSON here
+import { Eye, EyeOff } from 'lucide-react';
 
 const SignUp = () => {
     usePageTitle()
     const { createUser, updateUser, setUser } = useAuth()
     const [passError, setPassError] = useState('')
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const navigate = useNavigate()
     const location = useLocation()
 
-    console.log(createUser);
+    // console.log(createUser);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,36 +35,7 @@ const SignUp = () => {
         const photo = form.photo.value;
         const formData = new FormData(form)
         const { email, password, confirmPassword, ...rest } = Object.fromEntries(formData.entries())
-        // const userData = {
-        //     email,
-        //     password,
-        //     confirmPassword
-        // }
-        // console.log(userData);
-        // Handle form submission (e.g., API call)
 
-        // if (password.length < 8) {
-        //     toast.error("Password mast be 8 character or more");
-        //     setPassError('Password mast be 8 character or more');
-        //     return
-        // }
-        // if (!/[a-z]/.test(password)) {
-        //     toast.error("Password contains at least one lowercase letter.")
-        //     setPassError("Password contains at least one lowercase letter.");
-        //     return
-        // }
-        // if (!/[A-Z]/.test(password)) {
-        //     toast.error("Password contains at least one uppercase letter.")
-        //     setPassError('Password contains at least one uppercase letter.');
-        //     return
-        // }
-        // if (password !== confirmPassword) {
-        //     toast.error("Password and confirm password not matched..!")
-        //     setPassError("Password and confirm password not matched..!")
-        //     return
-        // }
-
-        // create user here
         createUser(email, password)
             .then(result => {
                 const user = result.user;
@@ -84,20 +57,7 @@ const SignUp = () => {
                     creationTime: user?.metadata?.creationTime,
                     lastSignInTime: user?.metadata?.lastSignInTime,
                 }
-                // fetch('https://freelance-task-marketplace-server.vercel.app/users', {
-                //     method: "POST",
-                //     headers: {
-                //         'Content-Type': 'application/json'
-                //     },
-                //     body: JSON.stringify(newUsers)
-                // })
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         if (data.insertedId) {
-                //             console.log('after adding data', data);
-                //         }
-                //     })
-                // console.log(user);
+
             })
     };
 
@@ -153,27 +113,41 @@ const SignUp = () => {
                                 />
                             </div>
                             {/* Password */}
-                            <div>
+                            <div className="relative">
                                 <label className="block dark:text-gray-200 text-sm font-semibold">Password</label>
                                 <input
-                                    type="password"
+                                    type={showPassword ? 'text' : 'password'}
                                     name="password"
                                     placeholder="********"
-                                    className="input dark:bg-gray-700 dark:text-gray-200 text-gray-700 bg-gray-100 dark:placeholder:text-gray-200 input-bordered w-full"
-                                    data-tip="Choose a strong password"
+                                    className="input pr-10 dark:bg-gray-700 dark:text-gray-200 text-gray-700 bg-gray-100 input-bordered w-full"
                                 />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-3 top-8 text-gray-500"
+                                    tabIndex={-1}
+                                >
+                                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                </button>
                             </div>
 
                             {/* Confirm Password */}
-                            <div>
-                                <label className="block dark:text-gray-200 text-sm font-semibold">Password</label>
+                            <div className="relative">
+                                <label className="block dark:text-gray-200 text-sm font-semibold">Confirm Password</label>
                                 <input
-                                    type="password"
+                                    type={showConfirmPassword ? 'text' : 'password'}
                                     name="confirmPassword"
                                     placeholder="********"
-                                    className="input dark:bg-gray-700 dark:text-gray-200 text-gray-700 bg-gray-100 dark:placeholder:text-gray-200 input-bordered w-full"
-                                    data-tip="Choose a strong password"
+                                    className="input pr-10 dark:bg-gray-700 dark:text-gray-200 text-gray-700 bg-gray-100 input-bordered w-full"
                                 />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    className="absolute right-3 top-8 text-gray-500"
+                                    tabIndex={-1}
+                                >
+                                    {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                </button>
                             </div>
                             {/* password error */}
                             <div className='text-sm text-red-900'>

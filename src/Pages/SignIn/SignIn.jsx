@@ -3,31 +3,23 @@ import { Typewriter } from 'react-simple-typewriter';
 import { Fade } from 'react-awesome-reveal';
 import { Mail, Lock, LogIn, MoveRight } from 'lucide-react';
 import Swal from 'sweetalert2';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import toast, { Toaster } from 'react-hot-toast';
 import usePageTitle from '../../Hooks/usePageTitle';
 import useAuth from '../../Hooks/useAuth';
+import { Eye, EyeOff } from 'lucide-react';
+import { useState } from 'react';
 
 const SignIn = () => {
     usePageTitle()
-    const { signInPass, signinWithGoogle } = useAuth()
+    const { signInPass, signinWithGoogle, signinWithGitHub } = useAuth()
+    const [showPassword, setShowPassword] = useState(false);
     // console.log(signInPass);
 
-    const provider = new GoogleAuthProvider();
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
-    const handleGoogle = () => {
-        signinWithGoogle(provider)
-            .then(result => {
-                const user = result.user;
-                // console.log(user?.photoURL);
-                toast.success(`Logged in as ${user.displayName}`)
-                navigate(location.state || '/')
-            })
-            .catch(err => {
-                toast.error("Google Sign-in Failed")
-                console.error(err.code)
-            })
-    }
+
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -44,31 +36,41 @@ const SignIn = () => {
                 const user = result.user;
                 navigate(`${location.state ? location.state : '/'}`);
                 console.log(user);
-                // const signInInfo = {
-                //     email,
-                //     lastSignInTime: user?.metadata?.lastSignInTime
-                // }
-                // fetch('https://freelance-task-marketplace-server.vercel.app/users', {
-                //     method: 'PATCH',
-                //     headers: {
-                //         'content-type': 'application/json'
-                //     },
-                //     body: JSON.stringify(signInInfo)
-                // })
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         console.log('after updated data', data);
-                //         Swal.fire({
-                //             position: "center",
-                //             icon: "success",
-                //             title: "Sign in successful",
-                //             showConfirmButton: false,
-                //             timer: 1500
-                //         });
-                //     })
+
             })
             .catch(error => {
                 const code = error.code;
+                console.log(code);
+            })
+    }
+
+    // handle google signin 
+    const handleGoogle = () => {
+        signinWithGoogle(googleProvider)
+            .then(result => {
+                const user = result.user;
+                // console.log(user?.photoURL);
+                toast.success(`Logged in as ${user.displayName}`)
+                navigate(location.state || '/')
+            })
+            .catch(err => {
+                toast.error("Google Sign-in Failed")
+                console.error(err.code)
+            })
+    }
+
+
+    // handle github signin
+    const handleSigninWithGithub = () => {
+        signinWithGitHub(githubProvider)
+            .then(result => {
+                const user = result.user;
+                // console.log(user?.photoURL);
+                toast.success(`Logged in as ${user.displayName}`)
+                navigate(location.state || '/')
+            })
+            .catch(err => {
+                const code = err.code;
                 console.log(code);
             })
     }
@@ -119,14 +121,21 @@ const SignIn = () => {
                                 <label className="block dark:text-gray-200 text-sm font-semibold mb-1">Password</label>
                                 <div className="relative">
                                     <input
-                                        type="password"
+                                        type={showPassword ? "text" : "password"}
                                         name="password"
                                         placeholder="********"
-                                        className="input dark:bg-gray-700 dark:text-gray-200 bg-gray-200 dark:placeholder:text-gray-200 input-bordered w-full pl-10"
+                                        className="input dark:bg-gray-700 dark:text-gray-200 bg-gray-200 dark:placeholder:text-gray-200 input-bordered w-full pl-10 pr-10"
                                         required
                                         data-tip="Enter your password"
                                     />
                                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 focus:outline-none"
+                                    >
+                                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                    </button>
                                 </div>
                             </div>
 
@@ -137,13 +146,29 @@ const SignIn = () => {
 
                         <div className="divider dark:divider-success text-gray-200 ">OR</div>
 
-                        <button
+                        {/* <button
                             onClick={handleGoogle}
-                            className="btn w-full flex items-center justify-center gap-2 border border-gray-300"
+                            className="btn w-full flex items-center text-gray-800 dark:text-white dark:bg-gray-800 bg-gray-200 justify-center gap-2 border border-gray-300"
                             data-tip="Sign in using Google account"
                         >
                             <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" className="w-5 h-5" />
                             Sign in with Google
+                        </button> */}
+
+                        {/* Google */}
+                        <button
+                            onClick={handleGoogle}
+                            className="btn bg-white btn-block text-black border-[#e5e5e5]">
+                            <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
+                            Login with Google
+                        </button>
+
+                        {/* GitHub */}
+                        <button
+                            onClick={handleSigninWithGithub}
+                            className="btn btn-block mt-4 bg-black text-white border-black">
+                            <svg aria-label="GitHub logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"></path></svg>
+                            Login with GitHub
                         </button>
 
                         <p className="mt-4 text-sm text-gray-600 dark:text-gray-200 text-center">
