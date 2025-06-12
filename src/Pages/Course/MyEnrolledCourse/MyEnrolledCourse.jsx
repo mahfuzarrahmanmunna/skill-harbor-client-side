@@ -6,10 +6,11 @@ import Fallback from '../../../Components/Fallback/Fallback';
 
 const MyEnrolledCourse = () => {
     const { user } = useAuth()
+    console.log(user.accessToken);
     return (
         <div>
             <Suspense fallback={<Fallback />}>
-                <EnrolledCourseTable enrolledCoursePromiseApi={EnrolledApi(user?.email)} />
+                <EnrolledCourseTable enrolledCoursePromiseApi={EnrolledApi(user?.email, user?.accessToken)} />
             </Suspense>
         </div>
     );

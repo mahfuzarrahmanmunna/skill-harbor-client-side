@@ -1,6 +1,10 @@
 
-const EnrolledApi = (email) => {
-    return fetch(`http://localhost:3000/my-enrolled-course?email=${email}`)
+const EnrolledApi = (email, token) => {
+    return fetch(`http://localhost:3000/my-enrolled-course?email=${email}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
         .then(res => res.json())
         .catch(err => {
             console.log(err);

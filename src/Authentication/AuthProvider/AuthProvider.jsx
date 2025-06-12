@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../../Firebase/firebase.init';
+import axios from 'axios';
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+
+    console.log(user);
+
     // create user
     const createUser = (email, password) => {
         setLoading(true)
@@ -37,9 +41,16 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setLoading(false)
-            // if (currentUser?.email) {
-            //     axios.post('')
-            // }
+            // post request 
+            if (currentUser?.email) {
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: currentUser?.email })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            }
         })
         return () => {
             unSubscribe()

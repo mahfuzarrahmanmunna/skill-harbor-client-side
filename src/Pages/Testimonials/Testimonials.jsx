@@ -1,0 +1,63 @@
+import { Fade, Zoom } from "react-awesome-reveal";
+import { motion } from "framer-motion";
+
+const testimonials = [
+    {
+        name: "Ariana Gomez",
+        role: "Software Engineer at Google",
+        image: "https://i.ibb.co/8zLm8hr/testimonial1.jpg",
+        feedback:
+            "This platform helped me stay ahead with modern tech skills. The instructors are amazing and the course structure is solid!",
+    },
+    {
+        name: "Rehan Ahmed",
+        role: "Web Developer at Upwork",
+        image: "https://i.ibb.co/f88nHTL/testimonial2.jpg",
+        feedback:
+            "From beginner to pro – this site guided me all the way. Enrolling in 3 courses really changed my career path!",
+    },
+    {
+        name: "Miyuki Tanaka",
+        role: "Frontend Developer in Tokyo",
+        image: "https://i.ibb.co/z62Lnw9/testimonial3.jpg",
+        feedback:
+            "The UI/UX and learning experience is top-notch. I’d definitely recommend this platform to anyone looking to upskill.",
+    },
+];
+
+export default function Testimonials() {
+    return (
+        <div className="min-h-screen  px-4 py-16 lg:px-20">
+            <motion.div
+                className="text-center mb-12"
+                initial={{ opacity: 0, y: -30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
+                <h2 className="text-3xl lg:text-5xl font-bold mb-4">What Our Learners Say</h2>
+                <p className="text-gray-500 max-w-2xl mx-auto">
+                    Real feedback from students who have transformed their careers through our platform.
+                </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {testimonials.map((item, idx) => (
+                    <Fade direction="up" triggerOnce key={idx}>
+                        <div className="bg-white dark:bg-neutral rounded-2xl shadow-xl p-6 text-center">
+                            <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-24 h-24 mx-auto rounded-full object-cover mb-4 border-4 border-primary"
+                            />
+                            <h3 className="text-xl font-semibold">{item.name}</h3>
+                            <p className="text-sm text-primary mb-2">{item.role}</p>
+                            <Zoom triggerOnce>
+                                <p className="text-gray-600 dark:text-gray-300">{item.feedback}</p>
+                            </Zoom>
+                        </div>
+                    </Fade>
+                ))}
+            </div>
+        </div>
+    );
+}

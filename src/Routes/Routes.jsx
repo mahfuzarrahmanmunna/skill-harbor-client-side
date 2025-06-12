@@ -12,6 +12,7 @@ import ErrorPage from "../Error/ErrorPage";
 import ManageCourse from "../Pages/Course/ManageCourse/ManageCourse";
 import UpdateManagePost from "../Pages/Course/ManageCourse/UpdateManagePost";
 import MyEnrolledCourse from "../Pages/Course/MyEnrolledCourse/MyEnrolledCourse";
+import Testimonials from "../Pages/Testimonials/Testimonials";
 
 export const router = createBrowserRouter([
     {
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
             {
                 path: '/sign-in',
                 Component: SignIn
+            },
+            {
+                path: "/testimonials",
+                Component: Testimonials
             }
         ]
     }

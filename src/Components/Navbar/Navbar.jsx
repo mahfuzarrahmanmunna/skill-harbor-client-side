@@ -80,6 +80,11 @@ const Navbar = () => {
                     </li>
                 </>
             )}
+            <li>
+                <NavLink to="/testimonials" className={navLinkClass}>
+                    Testimonials
+                </NavLink>
+            </li>
         </>
     );
 
