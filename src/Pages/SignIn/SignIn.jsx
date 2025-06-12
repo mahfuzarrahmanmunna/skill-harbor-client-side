@@ -144,7 +144,7 @@ const SignIn = () => {
                             </button>
                         </form>
 
-                        <div className="divider dark:divider-success text-gray-200 ">OR</div>
+                        <div className="divider divide-accent dark:divider-success text-gray-700 dark:text-gray-200 ">OR</div>
 
                         {/* <button
                             onClick={handleGoogle}

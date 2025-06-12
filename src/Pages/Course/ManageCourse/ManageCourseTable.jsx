@@ -11,7 +11,7 @@ import NoCourseFound from './NoCourseFound';
 const ManageCourseTable = ({ manageCoursePromise }) => {
     const initialCourses = use(manageCoursePromise);
     const [courses, setCourses] = useState(initialCourses);
-    console.log(courses.length);
+    // console.log(courses.length);
 
     const handleDeleteManageCourse = (id) => {
         Swal.fire({
