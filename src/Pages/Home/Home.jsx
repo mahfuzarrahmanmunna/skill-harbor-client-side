@@ -12,7 +12,7 @@ import PopularCourse from '../Course/PopularCourse/PopularCourse';
 
 const Home = () => {
     usePageTitle('Home');
-    const { user } = useAuth();
+    // const { user } = useAuth();
 
     return (
         <div>
