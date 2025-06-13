@@ -6,8 +6,10 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import DetailsError from "../../../Error/DetailsError";
 import { FaCommentDollar } from "react-icons/fa";
+import usePageTitle from "../../../Hooks/usePageTitle";
 
 const CourseDetails = () => {
+    usePageTitle()
     const data = useLoaderData();
     const [course, setCourse] = useState(data);
     const { id } = useParams();

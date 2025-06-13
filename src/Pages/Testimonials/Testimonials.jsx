@@ -1,5 +1,6 @@
 import { Fade, Zoom } from "react-awesome-reveal";
 import { motion } from "framer-motion";
+import usePageTitle from "../../Hooks/usePageTitle";
 
 const testimonials = [
     {
@@ -26,6 +27,7 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+    usePageTitle()
     return (
         <div className="min-h-screen  px-4 py-16 lg:px-20">
             <motion.div

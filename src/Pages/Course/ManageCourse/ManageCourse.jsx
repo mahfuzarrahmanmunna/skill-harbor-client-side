@@ -3,8 +3,10 @@ import useAuth from '../../../Hooks/useAuth';
 import Fallback from '../../../Components/Fallback/Fallback';
 import ManageCourseTable from './ManageCourseTable';
 import useManageApiPromise from '../../../Api/ManageApi/useManageApi';
+import usePageTitle from '../../../Hooks/usePageTitle';
 
 const ManageCourse = () => {
+    usePageTitle()
     const { user } = useAuth();
     const { manageApiPromise } = useManageApiPromise()
     return (

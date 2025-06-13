@@ -12,6 +12,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const AddCourse = () => {
+    usePageTitle()
     usePageTitle("Add Course");
     const { loading, user } = useAuth();
     const navigate = useNavigate();

@@ -3,8 +3,10 @@ import useAuth from '../../../Hooks/useAuth';
 import EnrolledCourseTable from './EnrolledCourseTable';
 import Fallback from '../../../Components/Fallback/Fallback';
 import useMyEnrolledApi from '../../../Api/MyEnrolledApi/useMyEnrolledApi';
+import usePageTitle from '../../../Hooks/usePageTitle';
 
 const MyEnrolledCourse = () => {
+    usePageTitle()
     const { user } = useAuth()
     const { myEnrolledCoursePromise } = useMyEnrolledApi()
     // console.log(myEnrolledCoursePromise);

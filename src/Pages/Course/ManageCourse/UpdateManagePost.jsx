@@ -7,8 +7,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import axios from "axios";
+import usePageTitle from "../../../Hooks/usePageTitle";
 
 const UpdateManagePost = () => {
+    usePageTitle()
     const course = useLoaderData();
     const navigate = useNavigate();
     const [duration, setDuration] = useState(new Date(course?.duration || new Date()));
