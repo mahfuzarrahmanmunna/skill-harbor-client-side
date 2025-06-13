@@ -28,7 +28,7 @@ const useAxiosSecure = () => {
         }
     );
 
-    return axiosInstance; // ✅ Fix: return axios client
+    return axiosInstance; 
 };
 
 export default useAxiosSecure;
