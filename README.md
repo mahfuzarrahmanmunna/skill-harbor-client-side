@@ -20,7 +20,7 @@ The purpose of this client is to allow users to:
 ## 🌟 Key Features
 
 - 🔐 Firebase Email/Password Auth
-- 🎫 JWT + Firebase Token Authorization
+- 🎫 JWT Token Authorization
 - 🧑 Instructor dashboard to create/update/delete courses
 - 👨‍🎓 User dashboard to view enrolled courses
 - 📦 REST API integration via Axios
