@@ -54,7 +54,7 @@ const ManageCourseTable = ({ manageCoursePromise }) => {
             }
         });
     };
-    if (courses.length <= 0) {
+    if (courses?.length <= 0) {
         return <NoCourseFound />
     }
 
@@ -99,7 +99,7 @@ const ManageCourseTable = ({ manageCoursePromise }) => {
 
                     {/* Table Body */}
                     <tbody className="divide-y divide-gray-100 dark:divide-neutral-700">
-                        {courses.map((course, index) => (
+                        {courses?.map((course, index) => (
                             <motion.tr
                                 key={index}
                                 className="hover:bg-gray-50 dark:hover:bg-neutral-700 transition"

@@ -11,6 +11,7 @@ import usePageTitle from '../../Hooks/usePageTitle';
 import toast, { Toaster } from 'react-hot-toast';
 import useAuth from '../../Hooks/useAuth';
 import { Eye, EyeOff } from 'lucide-react';
+import axios from 'axios';
 
 const SignUp = () => {
     usePageTitle()
@@ -39,18 +40,28 @@ const SignUp = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                updateUser({ displayName: name, photoURL: photo })
-                    .then(() => {
-                        setUser({ ...user, displayName: name, photoURL: photo })
-                        navigate(`${location.state ? location.state : '/'}`);
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Your work has been saved",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
+                if (user?.email) {
+                    axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: user?.email }, {
+                        withCredentials: true
                     })
+                        .then(res => {
+                            updateUser({ displayName: name, photoURL: photo })
+                                .then(() => {
+                                    setUser({ ...user, displayName: name, photoURL: photo })
+                                    navigate(`${location.state ? location.state : '/'}`);
+                                    Swal.fire({
+                                        position: "center",
+                                        icon: "success",
+                                        title: "Your work has been saved",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                })
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                }
                 const newUsers = {
                     email,
                     rest,

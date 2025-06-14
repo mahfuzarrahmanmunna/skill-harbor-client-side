@@ -5,7 +5,7 @@ const useManageApiPromise = () => {
 
     const manageApiPromise = (email) => {
         return axiosSecure.get(`course?email=${email}`)
-            .then(res => res.data)
+            .then(res => res?.data.data)
     }
     return {
         manageApiPromise

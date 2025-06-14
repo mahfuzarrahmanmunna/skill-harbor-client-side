@@ -9,6 +9,7 @@ import usePageTitle from '../../Hooks/usePageTitle';
 import useAuth from '../../Hooks/useAuth';
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
+import axios from 'axios';
 
 const SignIn = () => {
     usePageTitle()
@@ -34,8 +35,20 @@ const SignIn = () => {
         signInPass(email, password)
             .then(result => {
                 const user = result.user;
-                navigate(`${location.state ? location.state : '/'}`);
-                console.log(user);
+
+                if (user?.email) {
+                    axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: user?.email }, {
+                        withCredentials: true
+                    })
+                        .then(res => {
+                            console.log(res.data);
+                            navigate(`${location.state ? location.state : '/'}`);
+                            console.log(user);
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                }
 
             })
             .catch(error => {
@@ -50,8 +63,19 @@ const SignIn = () => {
             .then(result => {
                 const user = result.user;
                 // console.log(user?.photoURL);
-                toast.success(`Logged in as ${user.displayName}`)
-                navigate(location.state || '/')
+                if (user?.email) {
+                    axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: user?.email }, {
+                        withCredentials: true
+                    })
+                        .then(res => {
+                            console.log(res.data);
+                            navigate(location.state || '/')
+                            toast.success(`Logged in as ${user.displayName}`)
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                }
             })
             .catch(err => {
                 toast.error("Google Sign-in Failed")
@@ -66,8 +90,20 @@ const SignIn = () => {
             .then(result => {
                 const user = result.user;
                 // console.log(user?.photoURL);
-                toast.success(`Logged in as ${user.displayName}`)
-                navigate(location.state || '/')
+
+                if (user?.email) {
+                    axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: user?.email }, {
+                        withCredentials: true
+                    })
+                        .then(res => {
+                            console.log(res.data);
+                            toast.success(`Logged in as ${user.displayName}`)
+                            navigate(location.state || '/')
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                }
             })
             .catch(err => {
                 const code = err.code;

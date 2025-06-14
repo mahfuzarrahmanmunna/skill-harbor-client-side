@@ -48,15 +48,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false)
             // post request 
-            if (currentUser?.email) {
-                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: currentUser?.email })
-                    .then(res => {
-                        console.log(res.data);
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-            }
+           
         })
         return () => {
             unSubscribe()

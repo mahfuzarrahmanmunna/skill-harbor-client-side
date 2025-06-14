@@ -1,34 +1,53 @@
-import axios from 'axios';
-import useAuth from './useAuth';
+
+
+import axios from "axios";
+import React, { useEffect } from "react";
+import useAuth from "./useAuth";
 
 const axiosInstance = axios.create({
     baseURL: 'https://skill-harbor-server.vercel.app/',
+    // baseURL: 'http://localhost:3000/',
     withCredentials: true,
 });
 
 const useAxiosSecure = () => {
-    const { user, logOutUser } = useAuth();
+    const { user, loading, logOutUser } = useAuth();
 
-    axiosInstance.interceptors.request.use((config) => {
-        if (user?.accessToken) {
-            config.headers.authorization = `Bearer ${user.accessToken}`;
-        }
-        return config;
-    });
+    useEffect(() => {
+        if (!loading && user?.accessToken) {
+            // Add request interceptor
+            const requestInterceptor = axiosInstance.interceptors.request.use(
+                (config) => {
+                    config.headers.Authorization = `Bearer ${user.accessToken}`;
+                    return config;
+                }
+            );
 
-    axiosInstance.interceptors.response.use(
-        (response) => response,
-        (error) => {
-            if (error.response?.status === 401 || error.response?.status === 403) {
-                return logOutUser().then(() => {
-                    console.log('Signed out due to 401/403');
-                });
-            }
-            return Promise.reject(error);
+            // Add response interceptor
+            const responseInterceptor = axiosInstance.interceptors.response.use(
+                (res) => res,
+                (err) => {
+                    if (err?.response?.status === 401 || err?.response?.status === 403) {
+                        logOutUser()
+                            .then(() => {
+                                console.log("Logged out due to token issue.");
+                            })
+                            .catch(console.error);
+                    }
+                    return Promise.reject(err);
+                }
+            );
+
+            // Cleanup to prevent multiple interceptors on re-renders
+            return () => {
+                axiosInstance.interceptors.request.eject(requestInterceptor);
+                axiosInstance.interceptors.response.eject(responseInterceptor);
+            };
         }
-    );
+    }, [user, loading, logOutUser]);
 
     return axiosInstance;
 };
 
 export default useAxiosSecure;
+

@@ -9,6 +9,7 @@ import Instructor from './Instructor';
 import StudentSuccess from './StudentSuccess';
 import CTASection from './CTASection';
 import PopularCourse from '../Course/PopularCourse/PopularCourse';
+import { Toaster } from 'react-hot-toast';
 
 const Home = () => {
     usePageTitle('Home');
@@ -34,6 +35,7 @@ const Home = () => {
             <div>
                 <Instructor />
             </div>
+            <Toaster />
 
             {/* Student Success Stories */}
             <div>
