@@ -14,7 +14,7 @@ const WhyChoseUs = () => {
                 viewport={{ once: true }}
             >
                 <h2 className="text-3xl md:text-4xl font-bold text-accent mb-4">
-                    Why Choose CareerCode?
+                    Why Choose SkillHarbor?
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 mb-10">
                     Empowering learners with top-tier education, guided by experts and powered by modern tech.

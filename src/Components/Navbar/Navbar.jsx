@@ -81,8 +81,8 @@ const Navbar = () => {
                 </>
             )}
             <li>
-                <NavLink to="/testimonials" className={navLinkClass}>
-                    Testimonials
+                <NavLink to="/about-us" className={navLinkClass}>
+                    About Us
                 </NavLink>
             </li>
         </>

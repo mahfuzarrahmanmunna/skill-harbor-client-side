@@ -44,7 +44,7 @@ const UpdateManagePost = () => {
         };
 
         try {
-            await axios.put(`http://localhost:3000/course/${course._id}`, updatedCourse);
+            await axios.put(`https://skill-harbor-server.vercel.app/course/${course._id}`, updatedCourse);
             toast.success(" Course updated successfully!");
             navigate("/manage-course");
         } catch (err) {

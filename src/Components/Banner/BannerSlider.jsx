@@ -27,7 +27,7 @@ export default function BannerSlider() {
                 <SwiperSlide >
                     <div className="relative h-full w-full">
                         <img
-                            src="https://i.ibb.co/d4bG9pMd/hearts-1976653-1280.jpg"
+                            src="https://i.ibb.co/1tWLckwr/pexels-pixabay-327540.jpg"
                             alt="banner"
                             className="absolute inset-0 h-full w-full object-cover brightness-50"
                         />
@@ -78,7 +78,7 @@ export default function BannerSlider() {
                 <SwiperSlide >
                     <div className="relative h-full w-full">
                         <img
-                            src="https://i.ibb.co/mChWMZsb/pexels-tirachard-kumtanom-112571-733856.jpg"
+                            src="https://i.ibb.co/sv0GSFCD/pexels-pavel-danilyuk-6203631.jpg"
                             alt="banner"
                             className="absolute inset-0 h-full w-full object-cover brightness-50"
                         />
@@ -110,9 +110,9 @@ export default function BannerSlider() {
                                 </div>
                             </Fade>
                             <Fade direction="up">
-                                <button className="px-8 btn btn-white btn-outline">
-                                    join us
-                                </button>
+                                <Link to='/about-us' className="px-8 btn btn-white btn-outline">
+                                    About us <ArrowRight />
+                                </Link>
                             </Fade>
                         </div>
                     </div>
@@ -121,7 +121,7 @@ export default function BannerSlider() {
                 <SwiperSlide >
                     <div className="relative h-full w-full">
                         <img
-                            src="https://i.ibb.co/TBCn1hTt/pexels-shvetsa-5711775.jpg"
+                            src="https://i.ibb.co/npCT8tz/pexels-sora-shimazaki-5926393.jpg"
                             alt="banner"
                             className="absolute inset-0 h-full w-full object-cover brightness-50"
                         />

@@ -13,6 +13,8 @@ import ManageCourse from "../Pages/Course/ManageCourse/ManageCourse";
 import UpdateManagePost from "../Pages/Course/ManageCourse/UpdateManagePost";
 import MyEnrolledCourse from "../Pages/Course/MyEnrolledCourse/MyEnrolledCourse";
 import Testimonials from "../Pages/Testimonials/Testimonials";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+// import PrivacyPolicy from "../Pages/PrivicyPolicy/PrivacyPolicy";
 
 export const router = createBrowserRouter([
     {
@@ -73,7 +75,11 @@ export const router = createBrowserRouter([
             {
                 path: "/testimonials",
                 Component: Testimonials
-            }
+            },
+            {
+                path: "/about-us",
+                Component: AboutUs
+            },
         ]
     }
 ])

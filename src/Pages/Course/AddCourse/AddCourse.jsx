@@ -52,7 +52,7 @@ const AddCourse = () => {
         newCourse.enrolledBy = []
         console.log(newCourse);
 
-        axios.post('http://localhost:3000/courses', newCourse)
+        axios.post('https://skill-harbor-server.vercel.app/courses', newCourse)
             .then(res => {
                 console.log(res);
                 toast.success(" Course added successfully!");

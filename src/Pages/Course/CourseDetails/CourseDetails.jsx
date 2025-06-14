@@ -40,7 +40,7 @@ const CourseDetails = () => {
         };
 
         try {
-            const response = await axios.post(`http://localhost:3000/course-order/${_id}`, enrollInfo);
+            const response = await axios.post(`https://skill-harbor-server.vercel.app/course-order/${_id}`, enrollInfo);
             const { enrolled: nowEnrolled, message } = response.data;
 
             // Update UI state
