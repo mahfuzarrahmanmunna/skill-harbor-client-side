@@ -33,7 +33,7 @@ const PopularCourse = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="max-w-6xl mx-auto my-16 px-4"
+            className="max-w-6xl mx-auto  my-16 px-4"
         >
             <h2 className="text-4xl font-bold text-center mb-10 text-primary"> Most Enrolled Courses</h2>
             <div className="grid md:grid-cols-3 gap-8">
@@ -54,9 +54,9 @@ const PopularCourse = () => {
                                     alt={course.title}
                                     className="h-48 w-full object-cover rounded-md mb-4"
                                 />
-                                <h3 className="text-xl font-semibold text-accent mb-2">{course.title}</h3>
+                                <h3 className="text-xl font-semibold text-accent mb-2">{course.title?.slice(0, 25)}...</h3>
                                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                                    {course.description?.slice(0, 100)}...
+                                    {course.description?.slice(0, 85)}...
                                 </p>
                                 <div className="text-sm text-gray-700 dark:text-gray-400 space-y-1">
                                     <p><strong>👤 Instructor:</strong> {course.createdBy}</p>

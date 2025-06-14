@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import ThemeSwitch from "../../Context/Theme/ThemeSwitch";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
@@ -102,7 +102,7 @@ const Navbar = () => {
                     <Fade direction="down" triggerOnce>
                         <div className="navbar px-4 lg:px-10 text-gray-700 dark:text-gray-200">
                             {/* Navbar Start (Mobile + Logo) */}
-                            <div className="navbar-start">
+                            <div className="navbar-start flex items-center">
                                 <div className="dropdown">
                                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                                         <svg
@@ -127,12 +127,22 @@ const Navbar = () => {
                                         {navItems}
                                     </ul>
                                 </div>
-                                <NavLink
-                                    to="/"
-                                    className="text-2xl font-bold text-primary hover:text-secondary transition-all duration-200"
-                                >
-                                    SkillHarbor
-                                </NavLink>
+                                <Link to='/'>
+                                    <motion.h1
+                                        className="text-2xl font-extrabold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-pink-500 to-emerald-500"
+                                        animate={{
+                                            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                                        }}
+                                        transition={{
+                                            duration: 10,
+                                            repeat: Infinity,
+                                            ease: 'easeInOut',
+                                        }}
+                                        style={{ backgroundSize: '200% 200%' }}
+                                    >
+                                        SkillHarbor
+                                    </motion.h1>
+                                </Link>
                             </div>
 
                             {/* Navbar Center */}

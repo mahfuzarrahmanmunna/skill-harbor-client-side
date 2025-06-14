@@ -5,10 +5,14 @@ import CourseCard from './CourseCard';
 import { Typewriter } from 'react-simple-typewriter';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from 'framer-motion';
+import NoCourseFound from '../ManageCourse/NoCourseFound';
+import { Toaster } from 'react-hot-toast';
 
 const AllCourse = () => {
     usePageTitle();
     const courses = useLoaderData();
+
+    if (courses.length <= 0) return <NoCourseFound />
 
     return (
         <div className='lg:px-24 md:px-12 px-6 py-12'>
@@ -29,6 +33,7 @@ const AllCourse = () => {
                     delaySpeed={1500}
                 />
             </motion.h1>
+            <Toaster />
 
             {/* Course Grid with Animation */}
             <Fade cascade damping={0.1} triggerOnce>

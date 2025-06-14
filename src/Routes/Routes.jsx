@@ -73,10 +73,6 @@ export const router = createBrowserRouter([
                 Component: SignIn
             },
             {
-                path: "/testimonials",
-                Component: Testimonials
-            },
-            {
                 path: "/about-us",
                 Component: AboutUs
             },
