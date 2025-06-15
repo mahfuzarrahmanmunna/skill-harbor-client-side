@@ -10,6 +10,7 @@ import StudentSuccess from './StudentSuccess';
 import CTASection from './CTASection';
 import PopularCourse from '../Course/PopularCourse/PopularCourse';
 import { Toaster } from 'react-hot-toast';
+import FrequentlyAsk from './FrequentlyAsk';
 
 const Home = () => {
     usePageTitle('Home');
@@ -25,6 +26,10 @@ const Home = () => {
 
             {/* Popular Courses */}
             <PopularCourse />
+
+            <div>
+                <FrequentlyAsk />
+            </div>
 
             {/* //why chose us section */}
             <div>

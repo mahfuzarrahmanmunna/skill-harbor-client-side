@@ -1,0 +1,22 @@
+[
+    {
+        "question": "What is Skill Harbor?",
+        "answer": "Skill Harbor is an online course platform where users can post their own courses and others can enroll to learn."
+    },
+    {
+        "question": "How can I create a course?",
+        "answer": "Once you're logged in, go to the 'Add Course' section from your dashboard and fill in the course details."
+    },
+    {
+        "question": "Can I enroll in multiple courses?",
+        "answer": "Yes, you can enroll in as many courses as you like, as long as seats are available."
+    },
+    {
+        "question": "Can I switch to dark mode?",
+        "answer": "Absolutely! The platform supports dark and light themes with a toggle option."
+    },
+    {
+        "question": "Is Skill Harbor free to use?",
+        "answer": "Yes, the platform is free to use for both course creators and students."
+    }
+]
