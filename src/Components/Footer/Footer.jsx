@@ -7,7 +7,12 @@ const Footer = () => {
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Column 1: Logo & Slogan */}
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Skill Harbor</h1>
+                    <div className='flex items-center gap-2 rounded'> 
+                        <figure>
+                            <img src="https://i.ibb.co/cWMG8m2/Secondary-Logo.png" className='w-12' alt="" />
+                        </figure>
+                        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Skill Harbor</h1>
+                    </div>
                     <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                         Empowering Learning, One Course at a Time.
                     </p>

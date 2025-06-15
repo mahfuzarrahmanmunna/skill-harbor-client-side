@@ -127,9 +127,12 @@ const Navbar = () => {
                                         {navItems}
                                     </ul>
                                 </div>
-                                <Link to='/'>
+                                <Link to='/' className="flex gap-1">
+                                    <figure>
+                                        <img src="https://i.ibb.co/cWMG8m2/Secondary-Logo.png" className="w-12 border rounded" alt="" />
+                                    </figure>
                                     <motion.h1
-                                        className="text-2xl font-extrabold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-pink-500 to-emerald-500"
+                                        className="text-2xl font-extrabold text-center  bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-pink-500 to-emerald-500"
                                         animate={{
                                             backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                                         }}
