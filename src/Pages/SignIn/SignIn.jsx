@@ -89,7 +89,7 @@ const SignIn = () => {
         signinWithGitHub(githubProvider)
             .then(result => {
                 const user = result.user;
-                // console.log(user?.photoURL);
+                console.log(user);
 
                 if (user?.email) {
                     axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: user?.email }, {
