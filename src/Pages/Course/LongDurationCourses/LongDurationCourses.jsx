@@ -2,14 +2,22 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import Slider from 'react-slick';
+import Fallback from '../../../Components/Fallback/Fallback';
+import useAuth from '../../../Hooks/useAuth';
 
 const LongDurationCourses = () => {
     const [courses, setCourses] = useState([])
+    const { loading, setLoading } = useAuth()
 
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_API_URL}/long-duration-courses`)
             .then(res => {
-                setCourses(res.data)
+                setCourses(res.data);
+                setLoading(false)
+            })
+            .catch(err => {
+                console.log(err);
+                setLoading(false)
             })
     }, [])
     console.log(courses);
@@ -50,26 +58,26 @@ const LongDurationCourses = () => {
         <div className='slider-container px-4 py-8 max-w-7xl mx-auto'>
             <h2 className="text-2xl font-bold mb-6 text-center">Long Duration Courses</h2>
             {
-                courses.length == 0 ? (<>
-                    <p>There is no Data founded</p>
-                </>) : (
+                loading ? (
+                    <Fallback />
+                ) : courses.length === 0 ? (
+                    <p className="text-center text-gray-500">There is no data found</p>
+                ) : (
                     <Slider {...settings}>
-                        {
-                            courses.map((course, index) => (
-                                <Link key={index} to={`course-details/${course?._id}`} className='px-2'>
-                                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-4 h-full">
-                                        <img
-                                            src={course.image}
-                                            alt={course.title}
-                                            className="w-full h-40 object-cover rounded"
-                                        />
-                                        <h3 className="text-lg font-semibold mt-4">{course.title}</h3>
-                                        <p className="text-sm text-gray-500">{course.description?.slice(0, 50)}...</p>
-                                        <p className="mt-2 text-green-600 font-semibold">Duration: {formatDuration(course?.duration)}</p>
-                                    </div>
-                                </Link>
-                            ))
-                        }
+                        {courses.map((course, index) => (
+                            <Link key={index} to={`course-details/${course?._id}`} className='px-2'>
+                                <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-4 h-full">
+                                    <img
+                                        src={course.image}
+                                        alt={course.title}
+                                        className="w-full h-40 object-cover rounded"
+                                    />
+                                    <h3 className="text-lg font-semibold mt-4">{course.title}</h3>
+                                    <p className="text-sm text-gray-500">{course.description?.slice(0, 50)}...</p>
+                                    <p className="mt-2 text-green-600 font-semibold">Duration: {formatDuration(course?.duration)}</p>
+                                </div>
+                            </Link>
+                        ))}
                     </Slider>
                 )
             }
