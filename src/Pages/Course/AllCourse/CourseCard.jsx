@@ -15,7 +15,7 @@ const CourseCard = ({ course, index = 0 }) => {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
             >
-                <div className="max-w-sm lg:h-[450px] p-6 spy-2 rounded-2xl shadow-xl bg-white/80 dark:bg-slate-800 dark:text-white backdrop-blur-md transition-all duration-300 hover:shadow-2xl border border-slate-200 dark:border-slate-700">
+                <div className="max-w-sm xl:h-[450px] p-6 spy-2 rounded-2xl shadow-xl bg-white/80 dark:bg-slate-800 dark:text-white backdrop-blur-md transition-all duration-300 hover:shadow-2xl border border-slate-200 dark:border-slate-700">
                     <img
                         src={image}
                         alt={title}

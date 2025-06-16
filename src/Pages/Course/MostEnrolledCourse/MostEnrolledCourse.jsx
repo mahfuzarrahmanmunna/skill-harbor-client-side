@@ -74,7 +74,7 @@ const MostEnrolledCourse = () => {
                 </Slider>
             )}
 
-            <div className="text-center mt-6 space-x-2">
+            {/* <div className="text-center mt-6 space-x-2">
                 <button
                     className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                     onClick={() => sliderRef.current?.slickPlay()}
@@ -87,7 +87,7 @@ const MostEnrolledCourse = () => {
                 >
                     Pause
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 }

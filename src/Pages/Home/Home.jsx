@@ -9,6 +9,7 @@ import PopularCourse from '../Course/PopularCourse/PopularCourse';
 import { Toaster } from 'react-hot-toast';
 import FrequentlyAsk from './FrequentlyAsk';
 import MostEnrolledCourse from '../Course/MostEnrolledCourse/MostEnrolledCourse';
+import LongDurationCourses from '../Course/LongDurationCourses/LongDurationCourses';
 
 const Home = () => {
     usePageTitle();
@@ -26,6 +27,10 @@ const Home = () => {
 
             <div>
                 <MostEnrolledCourse />
+            </div>
+
+            <div>
+                <LongDurationCourses />
             </div>
 
             <div>

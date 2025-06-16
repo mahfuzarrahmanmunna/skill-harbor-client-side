@@ -12,7 +12,7 @@ const PopularCourse = () => {
     useEffect(() => {
         const fetchPopularCourses = async () => {
             try {
-                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/long-duration-courses`);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/highest-enrolled-courses`);
                 setPopularCourses(data);
             } catch (error) {
                 console.error("Error fetching popular courses:", error);
@@ -33,6 +33,10 @@ const PopularCourse = () => {
     if (loading) {
         return <Fallback />;
     }
+    if (popularCourses.length <= 0) return (<>
+        <h2 className="text-4xl font-bold text-center mb-10 text-primary"> Our Popular Courses</h2>
+        <p className='text-center py-4'>No Data founded</p>
+    </>)
 
     return (
         <motion.div
@@ -60,7 +64,7 @@ const PopularCourse = () => {
                                     alt={course.title}
                                     className="h-48 w-full object-cover rounded-md mb-4"
                                 />
-                                <h3 className="text-xl font-semibold text-accent mb-2">{course.title?.slice(0, 25)}...</h3>
+                                <h3 className="text-xl font-semibold text-accent mb-2">{course.title?.slice(0, 20)}...</h3>
                                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
                                     {course.description?.slice(0, 50)}...
                                 </p>
