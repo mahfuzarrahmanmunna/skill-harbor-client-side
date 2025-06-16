@@ -35,7 +35,7 @@ const CourseCard = ({ course, index = 0 }) => {
                     </div>
 
                     <p className="text-gray-700 dark:text-gray-300 text-sm">
-                        {description?.slice(0, 90)}...
+                        {description?.slice(0, 70)}...
                     </p>
                     <div>
                         <Link to={`/course-details/${_id}`} className='btn btn-primary btn-outline'>
