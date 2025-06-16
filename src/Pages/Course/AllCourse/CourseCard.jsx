@@ -25,12 +25,12 @@ const CourseCard = ({ course, index = 0 }) => {
                     <div className="mb-3 space-y-3">
                         <span className="flex gap-1 flex-wrap text-xs font-semibold tracking-widest uppercase text-accent">{
                             tags.map(tag =>
-                                <div key={tag} className="badge badge-soft badge-success border-gray-200 bg-gray-50"># {tag}</div>
-                            )
-                        }</span>
+                                <div key={tag} className="badge badge-soft badge-success border-gray-200 bg-gray-50"># {tag.slice(0, 5)}..</div>
+                            ).slice(0, 2)
+                        }...</span>
 
                         <h2 className="text-xl font-bold text-slate-800 dark:text-white">
-                            {title?.slice(0, 30)}...
+                            {title?.slice(0, 20)}...
                         </h2>
                     </div>
 

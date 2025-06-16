@@ -46,7 +46,7 @@ const PopularCourse = () => {
             className="max-w-6xl mx-auto  my-16 px-4"
         >
             <h2 className="text-4xl font-bold text-center mb-10 text-primary"> Our Popular Courses</h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {popularCourses.map((course, i) => (
                     <Fade
                         direction={i % 2 === 0 ? 'left' : 'right'}
@@ -69,7 +69,7 @@ const PopularCourse = () => {
                                     {course.description?.slice(0, 50)}...
                                 </p>
                                 <div className="text-sm text-gray-700 dark:text-gray-400 space-y-1">
-                                    <p><strong>👤 Instructor:</strong> {course.createdBy}</p>
+                                    <p><strong>👤 Instructor:</strong> {course.createdBy.slice(0, 20)}...</p>
                                     <p><strong>💸 Fee:</strong> ${course.fee}</p>
                                     <p><strong>👥 Enrolled:</strong> {course.enrolledBy?.length || 0}</p>
                                     <p><strong>⏳ Duration:</strong> {formatDuration(course?.duration)}</p>

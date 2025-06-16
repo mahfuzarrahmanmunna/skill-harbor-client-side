@@ -72,7 +72,7 @@ const CourseDetails = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="max-w-5xl my-12 lg:mx-auto md:mx-12 px-6 mx-6 py-10 bg-white/30 dark:bg-slate-900/40 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-200 dark:border-slate-700"
+                className="max-w-5xl my-12 xl:mx-auto md:mx-12 px-6 mx-6 py-10 bg-white/30 dark:bg-slate-900/40 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-200 dark:border-slate-700"
             >
                 <img src={image} alt={title} className="w-full h-80 object-cover rounded-xl mb-6" />
                 <h1 className="text-4xl font-bold text-accent mb-2">{title}</h1>
