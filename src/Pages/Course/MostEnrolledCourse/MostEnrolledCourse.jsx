@@ -17,7 +17,7 @@ const MostEnrolledCourse = () => {
         axios.get(`${import.meta.env.VITE_API_URL}/highest-enrolled-courses`)
             .then(res => {
                 setSlides(res.data || [])
-                console.log(res.data);
+                // console.log(res.data);
             })
             .catch(err => {
                 console.log(err);

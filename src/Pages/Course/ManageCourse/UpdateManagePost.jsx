@@ -13,7 +13,7 @@ const UpdateManagePost = () => {
     usePageTitle()
     const course = useLoaderData();
     const navigate = useNavigate();
-    const [duration, setDuration] = useState(new Date(course?.duration || new Date()));
+    console.log(course);
 
     const [formData, setFormData] = useState({
         title: course?.title || '',
@@ -21,12 +21,16 @@ const UpdateManagePost = () => {
         image: course?.image || '',
         category: course?.category || '',
         fee: course?.fee || '',
-        tot: course?.totalSeat || '',
+        totalSeat: course?.totalSeat || '',
         tags: course?.tags?.join(", ") || '',
         level: course?.level || 'Beginner',
         language: course?.language || '',
         mode: course?.mode || 'Online',
+        // totalSeat: course?.totalSeat
     });
+    const [duration, setDuration] = useState(course?.duration || '');
+    console.log(course?.totalSeat);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -38,13 +42,13 @@ const UpdateManagePost = () => {
 
         const updatedCourse = {
             ...formData,
-            duration: duration.toISOString(),
+            duration: Number(duration),
             tags: formData.tags?.split(",").map(tag => tag.trim()).filter(Boolean),
             updatedAt: new Date().toLocaleString(),
         };
 
         try {
-            await axios.put(`https://skill-harbor-server.vercel.app/course/${course._id}`, updatedCourse);
+            await axios.put(`${import.meta.env.VITE_API_URL}/course/${course._id}`, updatedCourse);
             toast.success(" Course updated successfully!");
             navigate("/manage-course");
         } catch (err) {
@@ -81,12 +85,23 @@ const UpdateManagePost = () => {
                         </div>
 
                         <div className="fieldset">
-                            <label className="block mb-1 font-semibold">Duration</label>
-                            <DatePicker
+                            <label className="block mb-1 font-semibold">Duration
+                                <span className="dark:text-gray-500 text-gray-400"> (This is minutes.)</span>
+                            </label>
+                            {/* <DatePicker
+                                className="input input-bordered w-full dark:bg-gray-700 bg-gray-200"
                                 selected={duration}
-                                onChange={(date) => setDuration(date)}
-                                className="input w-full dark:bg-gray-700 bg-gray-200"
-                            />
+                                onChange={(time) => setDuration(time)}
+                                showTimeSelect
+                                timeIntervals={15}
+                                timeCaption="Time"
+                                dateFormat="h:mm aa"
+                            /> */}
+                            <input type="text"
+                                className="input input-bordered w-full dark:bg-gray-700 bg-gray-200"
+                                value={duration}
+                                onChange={(e) => setDuration(e.target.value)}
+                                name="" id="" />
                         </div>
                         <Toaster />
                         <div className="fieldset">
@@ -111,7 +126,7 @@ const UpdateManagePost = () => {
 
                         <div className="fieldset">
                             <label className="block mb-1 font-semibold">Total Seat</label>
-                            <input type="number" name="seat" value={formData.totalSeat} onChange={handleChange} className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
+                            <input type="number" name="totalSeat" defaultValue={formData.totalSeat} onChange={handleChange} className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
                         </div>
 
                         <div className="fieldset">

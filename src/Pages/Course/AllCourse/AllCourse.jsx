@@ -15,7 +15,7 @@ const AllCourse = () => {
     if (courses.length <= 0) return <NoCourseFound />
 
     return (
-        <div className='lg:px-24 md:px-12 px-6 py-12'>
+        <div className='lg:px-12 xl:px-24 md:px-12 px-6 py-12'>
             {/* Typewriter Header */}
             <motion.h1
                 className='text-3xl md:text-4xl font-bold text-accent text-center mb-10'

@@ -7,7 +7,7 @@ const CourseCard = ({ course, index = 0 }) => {
     const { image, title, tags, description = "No description available.", _id } = course || {};
 
     return (
-        <Fade>
+        <Fade className='md:mx-auto w-full'>
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
