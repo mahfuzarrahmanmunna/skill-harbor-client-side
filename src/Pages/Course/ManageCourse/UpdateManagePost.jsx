@@ -21,7 +21,7 @@ const UpdateManagePost = () => {
         image: course?.image || '',
         category: course?.category || '',
         fee: course?.fee || '',
-        seat: course?.totalSeat || '',
+        totalSeat: course?.totalSeat || '',
         tags: course?.tags?.join(", ") || '',
         level: course?.level || 'Beginner',
         language: course?.language || '',
@@ -111,7 +111,7 @@ const UpdateManagePost = () => {
 
                         <div className="fieldset">
                             <label className="block mb-1 font-semibold">Total Seat</label>
-                            <input type="number" name="seat" value={formData.seat} onChange={handleChange} className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
+                            <input type="text" name="seat" defaultValue={formData.totalSeat} onChange={handleChange} className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
                         </div>
 
                         <div className="fieldset">

@@ -102,9 +102,10 @@ const CourseDetails = () => {
                     <button
                         disabled={!user || (totalSeat <= 0 && !enrolled)}
                         onClick={handleEnrolledButton}
-                        className={`btn px-6 py-2 text-white font-semibold rounded-lg shadow-md
+                        className={`btn px-6 py-2 text-gray-800 dark:text-white font-semibold rounded-lg shadow-md
                     ${(!user || (totalSeat <= 0 && !enrolled)) ? "opacity-50 cursor-not-allowed" : ""}
-                    ${enrolled ? "bg-red-600 hover:bg-red-700" : "bg-primary btn-outline hover:bg-accent"}`}
+                    ${enrolled ? "bg-red-600 hover:bg-red-700" : "bg-primary btn-outline hover:bg-accent"}
+                    `}
                     >
                         {enrolled ? "Unenroll" : totalSeat <= 0 ? "No seats left" : "Enroll Now"}
                     </button>

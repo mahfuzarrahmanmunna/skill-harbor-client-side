@@ -62,7 +62,8 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes>
                     <UpdateManagePost />
                 </PrivateRoutes>,
-                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/single-course/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/single-course/${params.id}`),
+                hydrateFallbackElement: <Fallback />
             },
             {
                 path: '/sign-up',

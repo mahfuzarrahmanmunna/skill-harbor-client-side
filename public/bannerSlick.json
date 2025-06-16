@@ -1,0 +1,35 @@
+[
+    {
+        "title": "Welcome to Our Course Platform",
+        "image": "https://i.ibb.co/1tWLckwr/pexels-pixabay-327540.jpg",
+        "text": [
+            "Learn at your own pace",
+            "Top instructors",
+            "Flexible schedules"
+        ],
+        "link": "/sign-in",
+        "button": "Join us"
+    },
+    {
+        "title": "Join Thousands of Learners",
+        "image": "https://i.ibb.co/sv0GSFCD/pexels-pavel-danilyuk-6203631.jpg",
+        "text": [
+            "Boost your career",
+            "Learn modern tools",
+            "Become job-ready"
+        ],
+        "link": "/about-us",
+        "button": "About us"
+    },
+    {
+        "title": "Build Real World Skills",
+        "image": "https://i.ibb.co/npCT8tz/pexels-sora-shimazaki-5926393.jpg",
+        "text": [
+            "Full stack development",
+            "Data science",
+            "Project-based learning"
+        ],
+        "link": "/all-course",
+        "button": "Explore Courses"
+    }
+]

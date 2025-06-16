@@ -11,6 +11,7 @@ import CTASection from './CTASection';
 import PopularCourse from '../Course/PopularCourse/PopularCourse';
 import { Toaster } from 'react-hot-toast';
 import FrequentlyAsk from './FrequentlyAsk';
+// import BannerReactSlick from './BannerReactSlick';
 
 const Home = () => {
     usePageTitle('Home');
@@ -18,6 +19,7 @@ const Home = () => {
 
     return (
         <div>
+            {/* <BannerReactSlick /> */}
             {/* Hero Banner */}
             <Banner />
 
