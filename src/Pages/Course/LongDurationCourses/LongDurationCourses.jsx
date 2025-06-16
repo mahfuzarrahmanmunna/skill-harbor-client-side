@@ -20,7 +20,7 @@ const LongDurationCourses = () => {
                 setLoading(false)
             })
     }, [])
-    console.log(courses);
+    // console.log(courses);
 
     const settings = {
         dots: true,
