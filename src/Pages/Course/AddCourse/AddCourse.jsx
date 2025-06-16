@@ -101,7 +101,7 @@ const AddCourse = () => {
                         {/* duration */}
                         <fieldset className="fieldset  w-full">
                             <label className="label font-bold">
-                                <span className="label-text">Time</span>
+                                <span className="label-text">Duration</span>
                             </label>
 
                             <DatePicker

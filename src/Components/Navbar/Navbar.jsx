@@ -61,25 +61,21 @@ const Navbar = () => {
                     All Courses
                 </NavLink>
             </li>
-            {user && (
-                <>
-                    <li>
-                        <NavLink to="/add-course" className={navLinkClass}>
-                            Add Course
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/manage-course" className={navLinkClass}>
-                            Manage Course
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/my-enrolled-course" className={navLinkClass}>
-                            My Enrolled Course
-                        </NavLink>
-                    </li>
-                </>
-            )}
+            <li>
+                <NavLink to="/add-course" className={navLinkClass}>
+                    Add Course
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to="/manage-course" className={navLinkClass}>
+                    Manage Course
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to="/my-enrolled-course" className={navLinkClass}>
+                    My Enrolled Course
+                </NavLink>
+            </li>
             <li>
                 <NavLink to="/about-us" className={navLinkClass}>
                     About Us

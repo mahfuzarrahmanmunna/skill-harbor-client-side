@@ -40,7 +40,7 @@ const CourseDetails = () => {
         };
 
         try {
-            const response = await axios.post(`https://skill-harbor-server.vercel.app/course-order/${_id}`, enrollInfo);
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/course-order/${_id}`, enrollInfo);
             const { enrolled: nowEnrolled, message } = response.data;
 
             // Update UI state
@@ -61,7 +61,7 @@ const CourseDetails = () => {
         const h = Math.floor(minutes / 60);
         const m = minutes % 60;
         return `${h > 0 ? h + "h " : ""}${m > 0 ? m + "m" : ""}`.trim();
-      }
+    }
 
     if (id !== course?._id) return <DetailsError />;
 

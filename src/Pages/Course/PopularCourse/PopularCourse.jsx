@@ -62,7 +62,7 @@ const PopularCourse = () => {
                                 />
                                 <h3 className="text-xl font-semibold text-accent mb-2">{course.title?.slice(0, 25)}...</h3>
                                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                                    {course.description?.slice(0, 85)}...
+                                    {course.description?.slice(0, 50)}...
                                 </p>
                                 <div className="text-sm text-gray-700 dark:text-gray-400 space-y-1">
                                     <p><strong>👤 Instructor:</strong> {course.createdBy}</p>
