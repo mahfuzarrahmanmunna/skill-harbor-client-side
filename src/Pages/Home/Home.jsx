@@ -1,9 +1,6 @@
 import usePageTitle from '../../Hooks/usePageTitle';
-import useAuth from '../../Hooks/useAuth';
 import Banner from '../../Components/Banner/Banner';
 import LatestCourse from '../../Components/LatestCourse/LatestCourse';
-import { Link } from 'react-router';
-import { motion } from "motion/react"
 import WhyChoseUs from './WhyChoseUs';
 import Instructor from './Instructor';
 import StudentSuccess from './StudentSuccess';
@@ -11,15 +8,13 @@ import CTASection from './CTASection';
 import PopularCourse from '../Course/PopularCourse/PopularCourse';
 import { Toaster } from 'react-hot-toast';
 import FrequentlyAsk from './FrequentlyAsk';
-// import BannerReactSlick from './BannerReactSlick';
+import MostEnrolledCourse from '../Course/MostEnrolledCourse/MostEnrolledCourse';
 
 const Home = () => {
-    usePageTitle('Home');
-    // const { user } = useAuth();
+    usePageTitle();
 
     return (
         <div>
-            {/* <BannerReactSlick /> */}
             {/* Hero Banner */}
             <Banner />
 
@@ -28,6 +23,10 @@ const Home = () => {
 
             {/* Popular Courses */}
             <PopularCourse />
+
+            <div>
+                <MostEnrolledCourse />
+            </div>
 
             <div>
                 <FrequentlyAsk />

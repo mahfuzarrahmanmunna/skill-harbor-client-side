@@ -12,7 +12,7 @@ const PopularCourse = () => {
     useEffect(() => {
         const fetchPopularCourses = async () => {
             try {
-                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/highest-enrolled-courses`);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/long-duration-courses`);
                 setPopularCourses(data);
             } catch (error) {
                 console.error("Error fetching popular courses:", error);
@@ -23,6 +23,12 @@ const PopularCourse = () => {
 
         fetchPopularCourses();
     }, []);
+    function formatDuration(minutes) {
+        if (!minutes) return "";
+        const h = Math.floor(minutes / 60);
+        const m = minutes % 60;
+        return `${h > 0 ? h + "h " : ""}${m > 0 ? m + "m" : ""}`.trim();
+    }
 
     if (loading) {
         return <Fallback />;
@@ -35,7 +41,7 @@ const PopularCourse = () => {
             transition={{ duration: 0.5 }}
             className="max-w-6xl mx-auto  my-16 px-4"
         >
-            <h2 className="text-4xl font-bold text-center mb-10 text-primary"> Most Enrolled Courses</h2>
+            <h2 className="text-4xl font-bold text-center mb-10 text-primary"> Our Popular Courses</h2>
             <div className="grid md:grid-cols-3 gap-8">
                 {popularCourses.map((course, i) => (
                     <Fade
@@ -62,12 +68,12 @@ const PopularCourse = () => {
                                     <p><strong>👤 Instructor:</strong> {course.createdBy}</p>
                                     <p><strong>💸 Fee:</strong> ${course.fee}</p>
                                     <p><strong>👥 Enrolled:</strong> {course.enrolledBy?.length || 0}</p>
+                                    <p><strong>⏳ Duration:</strong> {formatDuration(course?.duration)}</p>
                                 </div>
                             </motion.div>
                         </Link>
                     </Fade>
                 ))}
-
             </div>
         </motion.div>
     );

@@ -5,18 +5,20 @@ import usePageTitle from "../../../Hooks/usePageTitle";
 import useAuth from "../../../Hooks/useAuth";
 import Typewriter from 'typewriter-effect';
 import { Fade } from "react-awesome-reveal";
-import Lottie from "lottie-react";
 import axios from "axios";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 const AddCourse = () => {
-    usePageTitle()
     usePageTitle("Add Course");
     const { loading, user } = useAuth();
     const navigate = useNavigate();
-    const [duration, setDuration] = useState(new Date());
+    const [selectedTime, setSelectedTime] = useState(new Date());
+
+    const handleTimeChange = (time) => {
+        setSelectedTime(time);
+    };
+
 
     const handleAddCourse = async (e) => {
         e.preventDefault();
@@ -33,11 +35,14 @@ const AddCourse = () => {
         const language = form.language.value;
         const mode = form.mode.value;
 
+        const durationInMinutes = selectedTime.getHours() * 60 + selectedTime.getMinutes();
+
+
         const newCourse = {
             title,
             description,
             image,
-            duration: duration.toISOString(),
+            duration: durationInMinutes,
             fee,
             totalSeat,
             tags,
@@ -48,20 +53,21 @@ const AddCourse = () => {
             createdBy: user?.displayName || "Anonymous",
             email: user?.email,
             createdAt: new Date().toLocaleString(),
+            enrolledBy: []
         };
-        newCourse.enrolledBy = []
         console.log(newCourse);
 
-        axios.post('https://skill-harbor-server.vercel.app/courses', newCourse)
-            .then(res => {
-                console.log(res);
-                toast.success(" Course added successfully!");
-                navigate("/all-course");
-            })
-            .catch(err => {
-                console.log(err);
-                toast.error(" Failed to add course. Please try again.");
-            });
+        try {
+            await axios.post(`${import.meta.env.VITE_API_URL}/courses`, newCourse)
+                .then(res => {
+                    console.log(res);
+                });
+            toast.success("Course added successfully!");
+            navigate("/all-course");
+        } catch (err) {
+            console.log(err);
+            toast.error("Failed to add course. Please try again.");
+        }
     };
 
     return (
@@ -86,43 +92,62 @@ const AddCourse = () => {
 
                 <Fade cascade damping={0.1}>
                     <form onSubmit={handleAddCourse} className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                        <div className="fieldset">
+                        {/* title */}
+                        <div>
                             <label className="block mb-1 font-semibold">Course Title</label>
                             <input type="text" name="title" required placeholder="e.g. Mastering React" className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
                         </div>
 
                         {/* duration */}
-                        <div className="fieldset">
-                            <label className="block mb-1 font-semibold">Duration</label>
-                            <DatePicker className="input w-full dark:bg-gray-700 bg-gray-200" selected={duration} onChange={(date) => setDuration(date)} />
-                        </div>
+                        <fieldset className="fieldset  w-full">
+                            <label className="label font-bold">
+                                <span className="label-text">Time</span>
+                            </label>
 
-                        <div className="fieldset">
+                            <DatePicker
+                                className="input input-bordered w-full dark:bg-gray-700 bg-gray-200"
+                                selected={selectedTime}
+                                onChange={handleTimeChange}
+                                showTimeSelect
+                                showTimeSelectOnly
+                                timeIntervals={15}
+                                timeCaption="Time"
+                                dateFormat="h:mm aa"
+                            />
+                        </fieldset>
+
+                        {/* Image URL */}
+                        <div>
                             <label className="block mb-1 font-semibold">Image URL</label>
                             <input type="url" name="image" required placeholder="https://example.com/image.jpg" className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
                         </div>
 
-                        <div className="fieldset">
+                        {/* course fee */}
+                        <div>
                             <label className="block mb-1 font-semibold">Course Fee ($)</label>
                             <input type="number" name="fee" required min={0} placeholder="e.g. 99" className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
                         </div>
 
-                        <div className="fieldset">
+                        {/* Tags */}
+                        <div>
                             <label className="block mb-1 font-semibold">Tags <span className="text-sm text-gray-500">(optional, comma-separated)</span></label>
                             <input type="text" name="tags" placeholder="e.g. React, Frontend, Web Dev" className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
                         </div>
 
-                        <div className="fieldset">
+                        {/* Category */}
+                        <div>
                             <label className="block mb-1 font-semibold">Category</label>
                             <input type="text" name="category" placeholder="e.g. Web Development" className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
                         </div>
 
-                        <div className="fieldset">
+                        {/* Total Seat */}
+                        <div>
                             <label className="block mb-1 font-semibold">Total Seat</label>
                             <input type="number" name="totalSeat" placeholder="e.g. 250" className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
                         </div>
 
-                        <div className="fieldset">
+                        {/* Level */}
+                        <div>
                             <label className="block mb-1 font-semibold">Level</label>
                             <select name="level" className="select select-bordered w-full bg-gray-200 dark:bg-gray-700">
                                 <option>Beginner</option>
@@ -131,12 +156,18 @@ const AddCourse = () => {
                             </select>
                         </div>
 
-                        <div className="fieldset">
+                        {/* Language */}
+                        <div>
                             <label className="block mb-1 font-semibold">Language</label>
-                            <input type="text" name="language" placeholder="e.g. English" className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
+                            <select name="language" className="select select-bordered w-full dark:bg-gray-700 bg-gray-200">
+                                <option>English</option>
+                                <option>Bangla</option>
+                                <option>Hindi</option>
+                            </select>
                         </div>
 
-                        <div className="fieldset">
+                        {/* Mode */}
+                        <div>
                             <label className="block mb-1 font-semibold">Mode</label>
                             <select name="mode" className="select select-bordered w-full dark:bg-gray-700 bg-gray-200">
                                 <option>Online</option>
@@ -145,14 +176,16 @@ const AddCourse = () => {
                             </select>
                         </div>
 
+                        {/* Description */}
                         <div className="md:col-span-2">
                             <label className="block mb-1 font-semibold">Short Description</label>
                             <textarea name="description" rows={4} required placeholder="Provide a brief summary of the course..." className="textarea textarea-bordered w-full bg-gray-200 dark:bg-gray-700" />
                         </div>
 
+                        {/* Submit Button */}
                         <div className="md:col-span-2">
-                            <button type="submit" className="btn btn-outline bg-gradient-to-r from-primary to-accent dark:text-white dark:bg-gray-700  font-semibold w-full text-lg tracking-wide shadow-lg" disabled={loading}>
-                                {loading ? "Adding..." : `Add Course`}
+                            <button type="submit" className="btn btn-outline bg-gradient-to-r from-primary to-accent dark:text-white dark:bg-gray-700 font-semibold w-full text-lg tracking-wide shadow-lg" disabled={loading}>
+                                {loading ? "Adding..." : "Add Course"}
                             </button>
                         </div>
                     </form>

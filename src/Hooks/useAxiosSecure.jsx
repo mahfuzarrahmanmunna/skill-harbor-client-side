@@ -5,8 +5,8 @@ import React, { useEffect } from "react";
 import useAuth from "./useAuth";
 
 const axiosInstance = axios.create({
-    // baseURL: 'https://skill-harbor-server.vercel.app/',
-    baseURL: 'http://localhost:3000/',
+    baseURL: 'https://skill-harbor-server.vercel.app/',
+    // baseURL: 'http://localhost:3000/',
     withCredentials: true,
 });
 

@@ -56,6 +56,13 @@ const CourseDetails = () => {
         }
     };
 
+    function formatDuration(minutes) {
+        if (!minutes) return "";
+        const h = Math.floor(minutes / 60);
+        const m = minutes % 60;
+        return `${h > 0 ? h + "h " : ""}${m > 0 ? m + "m" : ""}`.trim();
+      }
+
     if (id !== course?._id) return <DetailsError />;
 
 
@@ -74,7 +81,8 @@ const CourseDetails = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm md:text-base">
                     <div>
                         <p className="flex gap-2 items-center"><FaCommentDollar /> <strong>Fee:</strong> ${fee}</p>
-                        <p><strong>⏳ Duration:</strong> {new Date(duration).toLocaleDateString()}</p>
+                        {/* <p><strong>⏳ Duration:</strong> {duration} Minutes</p> */}
+                        <p><strong>⏳ Duration:</strong> {formatDuration(duration)}</p>
                         <p><strong>🎓 Level:</strong> {level}</p>
                         <p><strong>🧠 Category:</strong> {category}</p>
                         <p><strong>🌍 Language:</strong> {language}</p>
