@@ -108,16 +108,20 @@ const CourseDetails = () => {
                 </div>
 
                 <div className="mt-8">
-                    <button
-                        disabled={!user || (totalSeat <= 0 && !enrolled)}
-                        onClick={handleEnrolledButton}
-                        className={`btn px-6 py-2 text-gray-800 dark:text-white font-semibold rounded-lg shadow-md
-                    ${(!user || (totalSeat <= 0 && !enrolled)) ? "opacity-50 cursor-not-allowed" : ""}
-                    ${enrolled ? "bg-red-600 hover:bg-red-700" : "bg-primary btn-outline hover:bg-accent"}
-                    `}
-                    >
-                        {enrolled ? "Unenroll" : totalSeat <= 0 ? "No seats left" : "Enroll Now"}
-                    </button>
+                    {totalSeat <= 0 && !enrolled ? (
+                        <p className="text-red-500 font-semibold text-lg">No seats left</p>
+                    ) : (
+                        <button
+                            disabled={!user}
+                            onClick={handleEnrolledButton}
+                            className={`btn px-6 py-2 text-gray-800 dark:text-white font-semibold rounded-lg shadow-md
+        ${!user ? "opacity-50 cursor-not-allowed" : ""}
+        ${enrolled ? "bg-red-600 hover:bg-red-700" : "bg-primary btn-outline hover:bg-accent"}
+      `}
+                        >
+                            {enrolled ? "Unenroll" : "Enroll Now"}
+                        </button>
+                    )}
 
                     {!user && <p className="text-red-500 mt-2 text-sm">Please log in to enroll.</p>}
                 </div>
