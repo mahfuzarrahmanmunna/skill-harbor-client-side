@@ -7,7 +7,7 @@ import { BiLeftArrow } from 'react-icons/bi';
 
 const NoMyCourse = () => {
     return (
-        <Fade direction="up" triggerOnce>
+        <Fade direction="up" className='my-12'>
             <motion.div
                 className="text-center mt-16"
                 initial={{ opacity: 0, y: 40 }}

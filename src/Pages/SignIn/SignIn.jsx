@@ -35,21 +35,8 @@ const SignIn = () => {
         signInPass(email, password)
             .then(result => {
                 const user = result.user;
-
-                if (user?.email) {
-                    axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: user?.email }, {
-                        withCredentials: true
-                    })
-                        .then(res => {
-                            console.log(res.data);
-                            navigate(`${location.state ? location.state : '/'}`);
-                            console.log(user);
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        })
-                }
-
+                navigate(`${location.state ? location.state : '/'}`);
+                console.log(user);
             })
             .catch(error => {
                 const code = error.code;
@@ -63,19 +50,8 @@ const SignIn = () => {
             .then(result => {
                 const user = result.user;
                 // console.log(user?.photoURL);
-                if (user?.email) {
-                    axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: user?.email }, {
-                        withCredentials: true
-                    })
-                        .then(res => {
-                            console.log(res.data);
-                            navigate(location.state || '/')
-                            toast.success(`Logged in as ${user.displayName}`)
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        })
-                }
+                navigate(location.state || '/')
+                toast.success(`Logged in as ${user.displayName}`)
             })
             .catch(err => {
                 toast.error("Google Sign-in Failed")
@@ -89,21 +65,9 @@ const SignIn = () => {
         signinWithGitHub(githubProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
-
-                if (user?.email) {
-                    axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: user?.email }, {
-                        withCredentials: true
-                    })
-                        .then(res => {
-                            console.log(res.data);
-                            toast.success(`Logged in as ${user.displayName}`)
-                            navigate(location.state || '/')
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        })
-                }
+                // console.log(user);
+                toast.success(`Logged in as ${user.displayName}`)
+                navigate(location.state || '/')
             })
             .catch(err => {
                 const code = err.code;

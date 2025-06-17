@@ -1,5 +1,3 @@
-
-
 import axios from "axios";
 import React, { useEffect } from "react";
 import useAuth from "./useAuth";
@@ -12,6 +10,7 @@ const axiosInstance = axios.create({
 
 const useAxiosSecure = () => {
     const { user, loading, logOutUser } = useAuth();
+    console.log(user?.accessToken);
 
     useEffect(() => {
         if (!loading && user?.accessToken) {

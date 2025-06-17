@@ -66,24 +66,18 @@ const SignUp = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                if (user?.email) {
-                    axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: user?.email }, { withCredentials: true })
-                        .then(() => {
-                            updateUser({ displayName: name, photoURL: photo })
-                                .then(() => {
-                                    setUser({ ...user, displayName: name, photoURL: photo });
-                                    navigate(`${location.state ? location.state : '/'}`);
-                                    Swal.fire({
-                                        position: "center",
-                                        icon: "success",
-                                        title: "Account created successfully!",
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
-                                });
-                        })
-                        .catch(err => console.log(err));
-                }
+                updateUser({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        setUser({ ...user, displayName: name, photoURL: photo });
+                        navigate(`${location.state ? location.state : '/'}`);
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Account created successfully!",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    });
             })
             .catch(err => {
                 setPassError(err.message);

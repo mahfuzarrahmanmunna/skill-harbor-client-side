@@ -8,11 +8,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import axios from "axios";
 import usePageTitle from "../../../Hooks/usePageTitle";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAuth from "../../../Hooks/useAuth";
 
 const UpdateManagePost = () => {
     usePageTitle()
     const course = useLoaderData();
     const navigate = useNavigate();
+    const { user } = useAuth()
+    const axiosSecure = useAxiosSecure()
     console.log(course);
 
     const [formData, setFormData] = useState({
@@ -48,7 +52,7 @@ const UpdateManagePost = () => {
         };
 
         try {
-            await axios.put(`${import.meta.env.VITE_API_URL}/course/${course._id}`, updatedCourse);
+            await axiosSecure.put(`${import.meta.env.VITE_API_URL}/course/${course._id}?email=${user?.email}`, updatedCourse);
             toast.success(" Course updated successfully!");
             navigate("/manage-course");
         } catch (err) {
@@ -126,7 +130,7 @@ const UpdateManagePost = () => {
 
                         <div className="fieldset">
                             <label className="block mb-1 font-semibold">Total Seat</label>
-                            <input type="number"  name="totalSeat" defaultValue={formData.totalSeat} onChange={handleChange} className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
+                            <input type="number" name="totalSeat" defaultValue={formData.totalSeat} onChange={handleChange} className="input input-bordered w-full dark:bg-gray-700 bg-gray-200" />
                         </div>
 
                         <div className="fieldset">

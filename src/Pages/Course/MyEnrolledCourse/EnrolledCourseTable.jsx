@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { } from 'react';
 import { motion } from "motion/react"
 import { Fade, Slide } from 'react-awesome-reveal';
 import Typewriter from 'typewriter-effect';
@@ -7,12 +7,11 @@ import CourseTable from './CourseTable';
 import { ActivityIcon } from 'lucide-react';
 import NoMyCourse from './NoMyCourse';
 
-const EnrolledCourseTable = ({ enrolledCoursePromiseApi }) => {
-    const initialCourses = use(enrolledCoursePromiseApi)
-    const [courses, setCourses] = useState(initialCourses);
+const EnrolledCourseTable = ({ courses, setCourses }) => {
 
+    // console.log(courses);
 
-    if (courses.length <= 0) {
+    if (courses?.length <= 0) {
         return <NoMyCourse />
     }
 
@@ -39,7 +38,7 @@ const EnrolledCourseTable = ({ enrolledCoursePromiseApi }) => {
 
 
             {/* Table Display */}
-            {courses.length > 0 && (
+            {courses?.length > 0 && (
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -58,7 +57,7 @@ const EnrolledCourseTable = ({ enrolledCoursePromiseApi }) => {
                         </thead>
                         <tbody className="divide-y divide-gray-200 dark:divide-neutral-700 text-gray-800 dark:text-gray-100">
 
-                            {courses.map((course, index) => (
+                            {courses?.map((course, index) => (
                                 <CourseTable course={course} key={index} index={index} setCourse={setCourses} />
                             ))}
 

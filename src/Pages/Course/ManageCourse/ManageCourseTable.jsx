@@ -4,14 +4,15 @@ import Typewriter from 'typewriter-effect';
 import { Pencil, Trash2 } from 'lucide-react';
 import { Link } from 'react-router';
 import { Toaster } from 'react-hot-toast';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import NoCourseFound from './NoCourseFound';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import useAuth from '../../../Hooks/useAuth';
 
-const ManageCourseTable = ({ manageCoursePromise }) => {
-    const initialCourses = use(manageCoursePromise);
-    const [courses, setCourses] = useState(initialCourses);
-    // console.log(courses.length);
+const ManageCourseTable = ({ courses, setCourses }) => {
+
+    const axiosSecure = useAxiosSecure()
+    const { user } = useAuth()
 
     const handleDeleteManageCourse = (id) => {
         Swal.fire({
@@ -24,7 +25,7 @@ const ManageCourseTable = ({ manageCoursePromise }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`${import.meta.env.VITE_API_URL}/single-course/${id}`)
+                axiosSecure.delete(`${import.meta.env.VITE_API_URL}/single-course/${id}?email=${user?.email}`)
                     .then(res => {
                         if (res.status === 200 || res.data?.deletedCount > 0) {
                             // Update the local state to remove deleted course

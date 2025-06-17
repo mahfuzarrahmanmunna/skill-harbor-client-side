@@ -1,11 +1,13 @@
 import axios from 'axios';
-import { Trash, Trash2 } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 import React from 'react';
 import Swal from 'sweetalert2';
 import useAuth from '../../../Hooks/useAuth';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 const CourseTable = ({ course, setCourse, index }) => {
     const { user } = useAuth()
+    const axiosSecure = useAxiosSecure()
     const {
         title,
         instructor,
@@ -25,7 +27,7 @@ const CourseTable = ({ course, setCourse, index }) => {
             confirmButtonText: 'Yes, remove it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`${import.meta.env.VITE_API_URL}/course-order/${id}?email=${email}`)
+                axiosSecure.delete(`${import.meta.env.VITE_API_URL}/course-order/${id}?email=${email}`)
                     .then(res => {
                         if (res.data?.deletedCount > 0 || res.status === 200) {
                             setCourse(prev => prev.filter(c => c._id !== id));

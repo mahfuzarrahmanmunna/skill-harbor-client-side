@@ -5,15 +5,16 @@ import usePageTitle from "../../../Hooks/usePageTitle";
 import useAuth from "../../../Hooks/useAuth";
 import Typewriter from 'typewriter-effect';
 import { Fade } from "react-awesome-reveal";
-import axios from "axios";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const AddCourse = () => {
     usePageTitle("Add Course");
     const { loading, user } = useAuth();
     const navigate = useNavigate();
     const [selectedTime, setSelectedTime] = useState(new Date());
+    const axiosSecure = useAxiosSecure()
 
     const handleTimeChange = (time) => {
         setSelectedTime(time);
@@ -58,7 +59,7 @@ const AddCourse = () => {
         console.log(newCourse);
 
         try {
-            await axios.post(`${import.meta.env.VITE_API_URL}/courses`, newCourse)
+            await axiosSecure.post(`${import.meta.env.VITE_API_URL}/courses?email=${user?.email}`, newCourse)
                 .then(res => {
                     console.log(res);
                 });

@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
-import axios from "axios";
 import { motion } from "framer-motion";
 import DetailsError from "../../../Error/DetailsError";
 import { FaCommentDollar } from "react-icons/fa";
 import usePageTitle from "../../../Hooks/usePageTitle";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const CourseDetails = () => {
     usePageTitle()
@@ -14,6 +14,7 @@ const CourseDetails = () => {
     const [course, setCourse] = useState(data);
     const { id } = useParams();
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure()
     // console.log(user);
     const {
         category, createdAt, createdBy, description, duration, email,
@@ -40,7 +41,7 @@ const CourseDetails = () => {
         };
 
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/course-order/${_id}`, enrollInfo);
+            const response = await axiosSecure.post(`${import.meta.env.VITE_API_URL}/course-order/${_id}?email=${user?.email}`, enrollInfo);
             const { enrolled: nowEnrolled, message } = response.data;
 
             // Update UI state
