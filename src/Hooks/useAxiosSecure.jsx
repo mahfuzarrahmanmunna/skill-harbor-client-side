@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
 
 const useAxiosSecure = () => {
     const { user, loading, logOutUser } = useAuth();
-    console.log(user?.accessToken);
+    // console.log(user?.accessToken);
 
     useEffect(() => {
         if (!loading && user?.accessToken) {
