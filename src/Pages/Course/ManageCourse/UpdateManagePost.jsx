@@ -17,7 +17,7 @@ const UpdateManagePost = () => {
     const navigate = useNavigate();
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
-    console.log(course);
+    // console.log(course);
 
     const [formData, setFormData] = useState({
         title: course?.title || '',
@@ -33,7 +33,7 @@ const UpdateManagePost = () => {
         // totalSeat: course?.totalSeat
     });
     const [duration, setDuration] = useState(course?.duration || '');
-    console.log(course?.totalSeat);
+    // console.log(course?.totalSeat);
 
 
     const handleChange = (e) => {
