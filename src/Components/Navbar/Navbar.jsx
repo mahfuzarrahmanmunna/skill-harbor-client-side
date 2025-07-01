@@ -56,12 +56,12 @@ const Navbar = () => {
                     Home
                 </NavLink>
             </li>
-            <li>
-                <NavLink to="/all-course" className={navLinkClass}>
-                    All Courses
-                </NavLink>
-            </li>
             {user && <>
+                <li>
+                    <NavLink to="/all-course" className={navLinkClass}>
+                        All Courses
+                    </NavLink>
+                </li>
                 <li>
                     <NavLink to="/add-course" className={navLinkClass}>
                         Add Course
