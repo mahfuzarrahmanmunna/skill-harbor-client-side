@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-300 dark:bg-gray-900 text-gray-700 dark:text-gray-300 px-6 py-10">
+        <footer className="bg-gray-300 z-40 dark:bg-gray-900 text-gray-700 dark:text-gray-300 px-6 py-10">
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Column 1: Logo & Slogan */}
                 <div>
@@ -46,8 +46,8 @@ const Footer = () => {
                 <div>
                     <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Support</h3>
                     <ul className="space-y-2">
-                        <li><a href="#" className="hover:text-blue-500">Help Center</a></li>
-                        <li><a href="#" className="hover:text-blue-500">Contact Us</a></li>
+                        <li><Link to='/help-center' className="hover:text-blue-500">Help Center</Link></li>
+                        <li><Link to='/contact-us' className="hover:text-blue-500">Contact Us</Link></li>
                         <li><Link to='/privacy-policy' className="hover:text-blue-500">Privacy Policy</Link></li>
                     </ul>
                 </div>

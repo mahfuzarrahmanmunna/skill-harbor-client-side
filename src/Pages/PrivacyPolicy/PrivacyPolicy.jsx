@@ -19,7 +19,7 @@ const PrivacyPolicy = () => {
     };
 
     return (
-        <section className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-6">
+        <section className="min-h-screen py-12 px-6">
             <motion.div
                 className="container mx-auto max-w-4xl bg-white dark:bg-gray-800 shadow-xl rounded-lg p-8"
                 initial={{ opacity: 0 }}

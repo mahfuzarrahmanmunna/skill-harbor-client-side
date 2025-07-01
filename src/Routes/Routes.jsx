@@ -15,6 +15,8 @@ import MyEnrolledCourse from "../Pages/Course/MyEnrolledCourse/MyEnrolledCourse"
 import Testimonials from "../Pages/Testimonials/Testimonials";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
+import ContactUs from "../Pages/ContactUs/ContactUs";
+import HelpCenter from "../Pages/HelpCenter/HelpCenter";
 // import PrivacyPolicy from "../Pages/PrivicyPolicy/PrivacyPolicy";
 
 export const router = createBrowserRouter([
@@ -81,6 +83,14 @@ export const router = createBrowserRouter([
             {
                 path: "/privacy-policy",
                 Component: PrivacyPolicy
+            },
+            {
+                path: "/contact-us",
+                Component: ContactUs
+            },
+            {
+                path: "/help-center",
+                Component: HelpCenter
             },
         ]
     }
