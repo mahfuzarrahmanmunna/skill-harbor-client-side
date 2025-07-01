@@ -83,6 +83,11 @@ const Navbar = () => {
                     About Us
                 </NavLink>
             </li>
+            <li>
+                <NavLink to="/help-center" className={navLinkClass}>
+                    Help
+                </NavLink>
+            </li>
         </>
     );
 

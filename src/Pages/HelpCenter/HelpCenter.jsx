@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import usePageTitle from "../../Hooks/usePageTitle";
 
 const HelpCenter = () => {
+    usePageTitle()
     const [expandedFAQ, setExpandedFAQ] = useState(null);
     const [searchQuery, setSearchQuery] = useState("");
 

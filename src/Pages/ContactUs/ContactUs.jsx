@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRightCircle, Facebook, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import usePageTitle from "../../Hooks/usePageTitle";
 
 const ContactUs = () => {
+    usePageTitle()
     const [formData, setFormData] = useState({
         name: "",
         email: "",

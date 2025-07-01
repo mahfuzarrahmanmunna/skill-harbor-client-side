@@ -14,6 +14,10 @@ const usePageTitle = () => {
         if (path === '/sign-up') document.title = "Sign Up | Skill Harbor"
         if (path === '/sign-in') document.title = "Sign In | Skill Harbor"
         if (path === '/about-us') document.title = "About Us | Skill Harbor"
+        if (path === '/privacy-policy') document.title = "Privacy and Policy | Skill Harbor"
+        if (path === '/contact-us') document.title = "Contact Us | Skill Harbor"
+        if (path === '/help-center') document.title = "Help Center | Skill Harbor"
+        if (path === '/pricing') document.title = "Pricing | Skill Harbor"
         if (path === '/my-enrolled-course') document.title = "My Enrolled Course | Skill Harbor"
         if (path.startsWith('/course-details/')) document.title = 'Course Details | Skill Harbor';
         if (path.startsWith('/edit-my-posted-course/')) document.title = 'Update Manage Course | Skill Harbor';

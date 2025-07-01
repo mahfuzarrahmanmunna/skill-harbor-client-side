@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDownCircle, ArrowUpCircle } from "lucide-react";
+import usePageTitle from "../../Hooks/usePageTitle";
 
 const PrivacyPolicy = () => {
+    usePageTitle()
     const [expandedSections, setExpandedSections] = useState({
         personalData: false,
         dataCollection: false,
