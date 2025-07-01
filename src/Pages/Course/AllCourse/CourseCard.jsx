@@ -1,44 +1,59 @@
 import React from 'react';
-import { motion } from "motion/react"
+import { motion } from "framer-motion";
 import { Link } from 'react-router';
 import { Fade } from 'react-awesome-reveal';
 
 const CourseCard = ({ course, index = 0 }) => {
-    const { image, title, tags, description = "No description available.", _id } = course || {};
+    const { image, title, tags = [], description = "No description available.", _id } = course || {};
 
     return (
-        <Fade className='md:mx-auto w-full'>
+        <Fade className="w-full">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2, ease: 'easeOut' }}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+                transition={{
+                    duration: 0.5,
+                    delay: index * 0.1,
+                    ease: [0.25, 0.1, 0.25, 1], // Smooth ease
+                }}
+                whileHover={{ scale: 1.015 }}
+                whileTap={{ scale: 0.98 }}
+                className="h-full"
             >
-                <div className="max-w-sm xl:h-[450px] p-6 spy-2 rounded-2xl shadow-xl bg-white/80 dark:bg-slate-800 dark:text-white backdrop-blur-md transition-all duration-300 hover:shadow-2xl border border-slate-200 dark:border-slate-700">
+                <div className="flex flex-col justify-between h-[500px] max-w-sm p-6 rounded-2xl shadow-md bg-white/90 dark:bg-slate-800 dark:text-white backdrop-blur-sm border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:shadow-2xl">
+
+                    {/* Image */}
                     <img
                         src={image}
                         alt={title}
-                        className="object-cover object-center w-full rounded-xl h-52 mb-4 shadow-md"
+                        className="w-full h-52 object-cover object-center rounded-xl shadow-sm mb-4"
                     />
 
-                    <div className="mb-3 space-y-3">
-                        <span className="flex gap-1 flex-wrap text-xs font-semibold tracking-widest uppercase text-accent">{
-                            tags.map(tag =>
-                                <div key={tag} className="badge badge-soft badge-success border-gray-200 bg-gray-50"># {tag.slice(0, 5)}..</div>
-                            ).slice(0, 2)
-                        }...</span>
-
-                        <h2 className="text-xl font-bold text-slate-800 dark:text-white">
-                            {title?.slice(0, 20)}...
-                        </h2>
+                    {/* Tags */}
+                    <div className="flex gap-2 flex-wrap text-xs font-semibold uppercase text-accent mb-2">
+                        {tags.slice(0, 2).map(tag => (
+                            <span key={tag} className="px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded text-green-600 dark:text-green-400">
+                                #{tag.slice(0, 12)}
+                            </span>
+                        ))}
                     </div>
 
-                    <p className="text-gray-700 dark:text-gray-300 text-sm">
-                        {description?.slice(0, 70)}...
+                    {/* Title */}
+                    <h2 className="text-lg font-bold line-clamp-2 text-slate-800 dark:text-white mb-2">
+                        {title}
+                    </h2>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 mb-4">
+                        {description}
                     </p>
-                    <div>
-                        <Link to={`/course-details/${_id}`} className='btn btn-primary btn-outline'>
+
+                    {/* Button */}
+                    <div className="mt-auto">
+                        <Link
+                            to={`/course-details/${_id}`}
+                            className="block w-full text-center py-2 px-4 rounded-xl border border-primary text-primary hover:bg-primary hover:text-white transition duration-300 font-medium"
+                        >
                             See Details
                         </Link>
                     </div>

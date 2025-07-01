@@ -55,7 +55,7 @@ const LongDurationCourses = () => {
         return `${h > 0 ? h + "h " : ""}${m > 0 ? m + "m" : ""}`.trim();
     }
     return (
-        <div className='slider-container px-4 py-8 max-w-7xl mx-auto'>
+        <div className='slider-container'>
             <h2 className="text-2xl font-bold mb-6 text-center">Long Duration Courses</h2>
             {
                 loading ? (

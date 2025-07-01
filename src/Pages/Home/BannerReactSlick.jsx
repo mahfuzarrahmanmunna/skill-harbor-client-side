@@ -50,7 +50,7 @@ export default function BannerReactSlick() {
     }, [])
 
     return (
-        <div className="relative h-[75vh] lg:h-[90vh] overflow-hidden">
+        <div className="relative h-[75vh] lg:h-[80vh] overflow-hidden">
             <Slider {...settings} className="h-full">
                 {slides.map((slide, index) => (
                     <div key={index}>

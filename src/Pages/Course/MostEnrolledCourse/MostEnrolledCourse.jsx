@@ -49,7 +49,7 @@ const MostEnrolledCourse = () => {
     };
 
     return (
-        <div className="slider-container px-4 py-8 max-w-7xl mx-auto">
+        <div className="slider-container">
             <h2 className="text-2xl font-bold mb-6 text-center">Most Enrolled Courses</h2>
 
             {

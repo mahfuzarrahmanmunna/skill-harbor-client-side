@@ -20,41 +20,47 @@ const Home = () => {
             <Banner />
 
             {/* Latest Course Section (Already added) */}
-            <LatestCourse />
+            <div className=''>
+                <div>
+                    <LatestCourse />
+                </div>
 
-            {/* Popular Courses */}
-            <PopularCourse />
+                {/* Popular Courses */}
+                <div>
+                    <PopularCourse />
+                </div>
 
-            <div>
-                <MostEnrolledCourse />
+                <div>
+                    <MostEnrolledCourse />
+                </div>
+
+                <div>
+                    <LongDurationCourses />
+                </div>
+
+                <div>
+                    <FrequentlyAsk />
+                </div>
+
+                {/* //why chose us section */}
+                <div>
+                    <WhyChoseUs />
+                </div>
+
+                {/* //Instructor section */}
+                <div>
+                    <Instructor />
+                </div>
+                <Toaster />
+
+                {/* Student Success Stories */}
+                <div>
+                    <StudentSuccess />
+                </div>
+
+                {/* CTA Section */}
+                <CTASection />
             </div>
-
-            <div>
-                <LongDurationCourses />
-            </div>
-
-            <div>
-                <FrequentlyAsk />
-            </div>
-
-            {/* //why chose us section */}
-            <div>
-                <WhyChoseUs />
-            </div>
-
-            {/* //Instructor section */}
-            <div>
-                <Instructor />
-            </div>
-            <Toaster />
-
-            {/* Student Success Stories */}
-            <div>
-                <StudentSuccess />
-            </div>
-
-            {/* CTA Section */}
-            <CTASection />
         </div>
     );
 };

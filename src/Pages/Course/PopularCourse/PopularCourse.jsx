@@ -43,7 +43,6 @@ const PopularCourse = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="max-w-6xl mx-auto  my-16 px-4"
         >
             <h2 className="text-4xl font-bold text-center mb-10 text-primary"> Our Popular Courses</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
