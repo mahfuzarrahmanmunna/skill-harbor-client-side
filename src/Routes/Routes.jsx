@@ -14,6 +14,7 @@ import UpdateManagePost from "../Pages/Course/ManageCourse/UpdateManagePost";
 import MyEnrolledCourse from "../Pages/Course/MyEnrolledCourse/MyEnrolledCourse";
 import Testimonials from "../Pages/Testimonials/Testimonials";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 // import PrivacyPolicy from "../Pages/PrivicyPolicy/PrivacyPolicy";
 
 export const router = createBrowserRouter([
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
             {
                 path: "/about-us",
                 Component: AboutUs
+            },
+            {
+                path: "/privacy-policy",
+                Component: PrivacyPolicy
             },
         ]
     }

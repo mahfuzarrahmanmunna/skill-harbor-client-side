@@ -5,7 +5,6 @@ import { Fade } from 'react-awesome-reveal';
 const Instructor = () => {
     return (
         < motion.section
-            className="my-20 max-w-6xl mx-auto px-4"
             initial={{ opacity: 0 }
             }
             whileInView={{ opacity: 1 }}

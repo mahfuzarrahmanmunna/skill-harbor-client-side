@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Column 1: Logo & Slogan */}
                 <div>
-                    <div className='flex items-center gap-2 rounded'> 
+                    <div className='flex items-center gap-2 rounded'>
                         <figure>
                             <img src="https://i.ibb.co/cWMG8m2/Secondary-Logo.png" className='w-12' alt="" />
                         </figure>
@@ -48,7 +48,7 @@ const Footer = () => {
                     <ul className="space-y-2">
                         <li><a href="#" className="hover:text-blue-500">Help Center</a></li>
                         <li><a href="#" className="hover:text-blue-500">Contact Us</a></li>
-                        <li><Link className="hover:text-blue-500">Privacy Policy</Link></li>
+                        <li><Link to='/privacy-policy' className="hover:text-blue-500">Privacy Policy</Link></li>
                     </ul>
                 </div>
             </div>

@@ -15,7 +15,7 @@ const AllCourse = () => {
     if (!courses || courses.length === 0) return <NoCourseFound />;
 
     return (
-        <div className="px-6 md:px-12 lg:px-16 xl:px-24 py-12 bg-gradient-to-b from-white to-gray-50 dark:from-slate-800 dark:to-slate-800 min-h-screen">
+        <div className=" px-6 md:px-10 lg:px-16 flex flex-col space-y-24 py-12 bg-gradient-to-b from-white to-gray-50 dark:from-slate-800 dark:to-slate-800 min-h-screen">
             {/* Header */}
             <motion.h1
                 className="text-3xl md:text-4xl font-bold text-accent text-center mb-10"
@@ -38,7 +38,7 @@ const AllCourse = () => {
 
             {/* Course Grid */}
             <Fade cascade damping={0.1} triggerOnce>
-                <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {courses.map((course, index) => (
                         <CourseCard key={course._id || index} course={course} index={index} />
                     ))}

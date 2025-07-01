@@ -6,7 +6,7 @@ const CTASection = () => {
 
     return (
         <motion.section
-            className={`my-24 mx-6 text-white py-12 px-6 text-center rounded-3xl shadow-xl max-w-6xl md:mx-12 lg:mx-auto bg-gradient-to-r  from-green-400 via-blue-500 to-purple-600`}
+            className={` text-white py-12 px-6 text-center rounded-3xl shadow-xl bg-gradient-to-r  from-green-400 via-blue-500 to-purple-600`}
             initial={{ scale: 0.95, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}

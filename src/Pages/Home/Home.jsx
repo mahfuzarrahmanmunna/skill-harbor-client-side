@@ -20,8 +20,8 @@ const Home = () => {
             <Banner />
 
             {/* Latest Course Section (Already added) */}
-            <div className=''>
-                <div>
+            <div className='mx-6 md:mx-10 lg:mx-16 flex flex-col space-y-24'>
+                <div className='mt-24'>
                     <LatestCourse />
                 </div>
 
@@ -59,7 +59,9 @@ const Home = () => {
                 </div>
 
                 {/* CTA Section */}
-                <CTASection />
+                <div className='mb-24'>
+                    <CTASection />
+                </div>
             </div>
         </div>
     );

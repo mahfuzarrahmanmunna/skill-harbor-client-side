@@ -29,7 +29,7 @@ const NextArrow = ({ onClick }) => (
 );
 
 export default function BannerReactSlick() {
-    const [slides, setSlides] = useState([])
+    const [slides, setSlides] = useState([]);
     const settings = {
         infinite: true,
         speed: 800,
@@ -45,9 +45,9 @@ export default function BannerReactSlick() {
     useEffect(() => {
         axios.get('./bannerSlick.json')
             .then(res => {
-                setSlides(res.data)
-            })
-    }, [])
+                setSlides(res.data);
+            });
+    }, []);
 
     return (
         <div className="relative h-[75vh] lg:h-[80vh] overflow-hidden">
@@ -62,7 +62,7 @@ export default function BannerReactSlick() {
                             />
                             <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4">
                                 <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-xl max-w-2xl w-full text-white">
-                                    <Fade direction="down" >
+                                    <Fade direction="down">
                                         <motion.h1
                                             initial={{ opacity: 0, y: 30 }}
                                             animate={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export default function BannerReactSlick() {
                                         </motion.h1>
                                     </Fade>
 
-                                    <Fade direction="down" delay={200} >
+                                    <Fade direction="down" delay={200}>
                                         <div className="text-lg md:text-xl font-light mb-6">
                                             <Typewriter
                                                 options={{

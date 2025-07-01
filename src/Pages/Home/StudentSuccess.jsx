@@ -6,7 +6,7 @@ import { Fade } from 'react-awesome-reveal';
 const StudentSuccess = () => {
     return (
         <motion.section
-            className="my-20 max-w-6xl mx-auto px-4"
+            className=""
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}

@@ -40,7 +40,7 @@ const CourseCard = ({ course, index = 0 }) => {
 
                     {/* Title */}
                     <h2 className="text-lg font-bold line-clamp-2 text-slate-800 dark:text-white mb-2">
-                        {title}
+                        {title.slice(0, 26)}...
                     </h2>
 
                     {/* Description */}
