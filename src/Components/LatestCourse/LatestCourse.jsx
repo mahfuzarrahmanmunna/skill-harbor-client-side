@@ -3,6 +3,7 @@ import CourseCard from '../../Pages/Course/AllCourse/CourseCard';
 import { motion } from 'framer-motion';
 import NotLatest from './NotLatest';
 import { Toaster } from 'react-hot-toast';
+import Fallback from '../Fallback/Fallback';
 
 const LatestCourse = () => {
     const [courses, setCourses] = useState([]);
@@ -63,7 +64,7 @@ const LatestCourse = () => {
 
             {/* Courses Grid */}
             {loading ? (
-                <p>Loading courses...</p> // Show a loading message while fetching data
+                <Fallback />
             ) : courses.length === 0 ? (
                 <motion.div
                     initial={{ opacity: 0 }}
