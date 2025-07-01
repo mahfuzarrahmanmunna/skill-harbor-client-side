@@ -17,6 +17,7 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import HelpCenter from "../Pages/HelpCenter/HelpCenter";
+import Pricing from "../Pages/Pricing/Pricing";
 // import PrivacyPolicy from "../Pages/PrivicyPolicy/PrivacyPolicy";
 
 export const router = createBrowserRouter([
@@ -91,6 +92,10 @@ export const router = createBrowserRouter([
             {
                 path: "/help-center",
                 Component: HelpCenter
+            },
+            {
+                path: "/pricing",
+                Component: Pricing
             },
         ]
     }

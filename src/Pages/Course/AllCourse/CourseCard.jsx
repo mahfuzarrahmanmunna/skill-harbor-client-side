@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { Fade } from 'react-awesome-reveal';
 
 const CourseCard = ({ course, index = 0 }) => {
-    const { image, title, tags = [], description = "No description available.", _id } = course || {};
+    const { image, title, tags = [], description = "No description available.", fee = 0, _id } = course || {};
 
     return (
         <Fade className="w-full">
@@ -40,13 +40,20 @@ const CourseCard = ({ course, index = 0 }) => {
 
                     {/* Title */}
                     <h2 className="text-lg font-bold line-clamp-2 text-slate-800 dark:text-white mb-2">
-                        {title.slice(0, 26)}...
+                        {title.slice(0, 20)}...
                     </h2>
 
                     {/* Description */}
                     <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 mb-4">
                         {description}
                     </p>
+
+                    {/* Price */}
+                    <div className="mb-4">
+                        <span className="text-lg font-bold text-slate-800 dark:text-white">
+                            ${fee}
+                        </span>
+                    </div>
 
                     {/* Button */}
                     <div className="mt-auto">
