@@ -72,8 +72,8 @@ const LongDurationCourses = () => {
                                         alt={course.title}
                                         className="w-full h-40 object-cover rounded"
                                     />
-                                    <h3 className="text-lg font-semibold mt-4">{course.title}</h3>
-                                    <p className="text-sm text-gray-500">{course.description?.slice(0, 50)}...</p>
+                                    <h3 className="text-lg font-semibold mt-4">{course.title.slice(0, 20)}..</h3>
+                                    <p className="text-sm text-gray-500">{course.description?.slice(0, 42)}...</p>
                                     <p className="mt-2 text-green-600 font-semibold">Duration: {formatDuration(course?.duration)}</p>
                                 </div>
                             </Link>

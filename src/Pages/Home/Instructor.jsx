@@ -19,7 +19,7 @@ const Instructor = () => {
                 >
                     <div className="p-4 bg-white dark:bg-neutral-900 rounded-xl shadow-md border dark:border-neutral-700 text-center">
                         <img src={`https://i.pravatar.cc/150?img=12`} alt="Instructor" className="mx-auto w-24 h-24 rounded-full mb-4" />
-                        <h4 className="font-semibold text-lg">Mahfuzar Rahman Munna</h4>
+                        <h4 className="font-semibold text-lg">Mahfuzar Rahman</h4>
                         <p className="text-sm text-gray-500 dark:text-gray-300">Full-Stack Developer | 8+ years experience</p>
                     </div>
                 </Fade>
